@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: MSX-coding</title>
+    <title>02-structure :: MSX-coding</title>
 
     
     <link href="/css/nucleus.css?1571851747" rel="stylesheet">
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/tuto-asm-01/02/02structure/">
     <nav id="sidebar" class="">
 
 
@@ -92,7 +92,7 @@
   
     
     <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
-        
+        parent
         
         
         ">
@@ -116,7 +116,7 @@
  
   
     
-      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-structure" class="dd-item ">
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-structure" class="dd-item active">
         <a href="/tuto-asm-01/02/02structure/">
         02-structure
         
@@ -200,7 +200,13 @@
             
           
           
-            <a href='/'>Accueil</a> > Tags
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 02-structure
+          
+         
           
          
           
@@ -227,7 +233,7 @@
           
             <h1>
               
-              Tags
+              02-structure
             </h1>
           
 
@@ -235,17 +241,102 @@
 
 
 
+<p>Je vais présenter uniquement ce qui est utile pour débuter le programme assembleur.</p>
 
-
+<p>Le MSX c&rsquo;est un processeur Z80 (le coeur).
+Il discute avec 3 organes principaux :</p>
 
 <ul>
-	
+<li><p>Le VDP : Un processeur qui gère l&rsquo;affichage écran (16ko de mémoire).</p></li>
+
+<li><p>Le PSG : Un processeur qui gère le son.</p></li>
+
+<li><p>Le PPI  : Un processeur qui gère le clavier notamment.</p></li>
 </ul>
+
+<p>Revenons au Z80, il dispose de 3 sortes de mémoires :</p>
+
+<ul>
+<li><p>La ROM.</p></li>
+
+<li><p>La RAM.</p></li>
+
+<li><p>Les registres internes.</p></li>
+</ul>
+
+<p><img src="/tuto asm 01/02/images/strucmsx.png?classes=shadow" alt="Stucture du MSX" /></p>
+
+<p>Les mémoires sont des cases. Pour pouvoir les différencier, on leur a donné des numéros que l&rsquo;on appelle Adresse (comme les numéros des maisons dans une rue).</p>
+
+<ul>
+<li><p>Ces adresses vont de 0 à 65535.</p></li>
+
+<li><p>Chaque adresse peut contenir un nombre entre 0 et 255.</p></li>
+</ul>
+
+<p><strong>ROM</strong> : Appelée mémoire morte. On peut simplement lire cette mémoire. On ne peut pas la modifier (données constructeur). Elle contient de petits programmes (routines) bien pratiques que l&rsquo;on utilisera en assembleur pour lancer des actions ou faire des calculs.</p>
+
+<p><strong>RAM</strong> : Appelée mémoire vive. Elle est modifiable et c&rsquo;est celle que nous utiliserons pour programmer. Par contre elle s&rsquo;efface dès que l&rsquo;on éteint le MSX.
+C&rsquo;est pour cela que l&rsquo;on sauvegarde nos programmes.</p>
+
+<p><strong>Registres internes</strong> : Ce sont des sortes de mémoires. Ils n&rsquo;ont pas d&rsquo;adresse mais des lettres. En assembleur, c&rsquo;est avec eux (une vingtaine environ) que l&rsquo;on va jouer.
+On va rappeler des adresses, lire ou écrire dedans et faire des calculs. Et tout ça, c&rsquo;est avec l&rsquo;aide de ces registres que l&rsquo;on va le faire.</p>
+
+<p><img src="/tuto asm 01/02/images/Regz80.jpg?classes=shadow" alt="Registres internes du Z80" /></p>
+
+<p>Il existe une page très simple et explicative du fonctionnement de ces registres du Z80 : <a href="http://www.google.com/url?q=http%3A%2F%2Ffr.wikibooks.org%2Fwiki%2FProgrammation_Assembleur_Z80&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHwD_VHYzPYk2D7E879Q2yaX32nQA">Wiki Z80</a></p>
+
+<p>Il est important que l&rsquo;on parle du VDP pour finir car c&rsquo;est avec lui que l&rsquo;on va discuter fréquemment pour afficher nos sprites et les faire bouger.
+Je passe volontairement sur les autres processeurs (PSG et PPI), on y reviendra au besoin.</p>
+
+<p><strong>VDP</strong>
+Ce processeur permet d&rsquo;afficher des images, des caractères ou des sprites à l&rsquo;écran.
+Il contient 16ko de mémoire, appelée <strong>VRAM</strong> (dans laquelle on peut lire et écrire) et <strong>9 registres internes</strong> (R0 à R7+ 1 registre d&rsquo;état) qui ne sont pas les mêmes que ceux du Z80.
+La VRAM est divisée en 5 tables : 3 pour gérer l&rsquo;affichage des caractères et 2 pour les sprites. Ces tables ne sont rien d&rsquo;autre qu&rsquo;un groupe d&rsquo;adresses pouvant stocker des nombres.</p>
+
+<p>Les 3 tables des caractères:</p>
+
+<p>-<strong>TGP</strong> (Table Génératrice des Patrons): C&rsquo;est là que l&rsquo;on stocke les formes des caractères. Quand on tape la lettre A, le processeur Z80 demande au VDP de choisir la forme correspondant à la lettre A dans cette table.</p>
+
+<p>-<strong>TNP</strong> (Table des Noms des Patrons): C&rsquo;est là que l&rsquo;on va indiquer où afficher le caractère à l&rsquo;écran.</p>
+
+<p>-<strong>TC</strong> (Table des Couleurs): C&rsquo;est dans cette table que l&rsquo;on va choisir la couleur du caractère et du fond de ce caractère.</p>
+
+<p>Le principe de fonctionnement de ces 3 tables est le suivant : on demande au processeur VDP d&rsquo;afficher un (ou des) caractère(s) en définissant ce que l&rsquo;on veut afficher, où on veut l&rsquo;afficher et dans quelle couleur. Et comme on connait maintenant les tables de caractères, on pourra modifier la forme de ces derniers à volonté (par exemple pour dessiner un décor de jeu).</p>
+
+<p>Les 2 tables des sprites:</p>
+
+<p>-<strong>TGS</strong> (Table Génératrice des Sprites): Stocke les dessins des sprites que l&rsquo;on va définir.</p>
+
+<p>-<strong>TAS</strong> (Table des Attributs des Sprites): stocke la position, le numéro et la couleur de chaque sprite.</p>
+
+<p><img src="/tuto asm 01/02/images/vdp.png?classes=shadow" alt="Registres internes du Z80" /></p>
+
+<p>Chacune de ces 5 tables débute par une adresse que l&rsquo;on doit connaitre pour pouvoir y intégrer une liste d&rsquo;informations, qui seront stockées à partir de là, vers les adresses suivantes en fonction du nombre d&rsquo;informations (données) à stocker.</p>
+
+<p>Pour définir automatiquement ces adresses de début en suivant les données constructeur, le VDP utilise 4 modes de fonctionnement :</p>
+
+<ul>
+<li><p>SCREEN 0 : Le mode texte</p></li>
+
+<li><p>SCREEN 1 : Le mode graphique 1</p></li>
+
+<li><p>SCREEN 2 : Le mode graphique 2</p></li>
+
+<li><p>SCREEN 3 : Le mode multicolore</p></li>
+</ul>
+
+<p>Le programme assembleur que je veux expliquer utilise le SCREEN 1 donc je ne parlerai que de celui-là pour l&rsquo;instant.</p>
+
+<p>Le SCREEN 1 sur MSX1 c&rsquo;est 32 colonnes sur 24 lignes de texte et la possibilité d&rsquo;utiliser les sprites.</p>
+
+<p><img src="/tuto asm 01/02/images/adrscreen1.png?classes=shadow" alt="Registres internes du Z80" /></p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -278,8 +369,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -293,6 +382,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -309,6 +399,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -333,8 +426,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/tuto-asm-01/" title="Tuto ASM 01"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/tuto-asm-01/" title="Tuto ASM 01" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/tuto-asm-01/01/01introduction/" title="01-introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -364,3 +459,4 @@
 
   </body>
 </html>
+

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Accueil on MSX-coding</title>
-    <link>/</link>
-    <description>Recent content in Accueil on MSX-coding</description>
+    <title>Tuto ASM 01 on MSX-coding</title>
+    <link>/tuto-asm-01/</link>
+    <description>Recent content in Tuto ASM 01 on MSX-coding</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 23 Oct 2019 04:27:59 +0200</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 01:48:00 +0200</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tuto-asm-01/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
