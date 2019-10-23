@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on MSX-coding</title>
-    <link>https://sfranck72.github.io/msx-coding/tags/</link>
+    <link>sfranck72.github.io/msx-coding/tags/</link>
     <description>Recent content in Tags on MSX-coding</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     
-	<atom:link href="https://sfranck72.github.io/msx-coding/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="sfranck72.github.io/msx-coding/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

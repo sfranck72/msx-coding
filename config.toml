@@ -1,6 +1,6 @@
 #baseURL = "http://example.org/"
 #url: sfranck72.github.io
-baseURL = "https://sfranck72.github.io/msx-coding/"
+baseURL = "sfranck72.github.io/msx-coding/"
 
 #languageCode = "en-us"
 languageCode = "fr"
