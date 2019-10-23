@@ -9,6 +9,10 @@ title = "MSX-coding"
 # Modifiez le thème pour qu'il soit utilisé par défaut à chaque génération de site.
 theme = "hugo-theme-learn"
 
+[params]
+  # Modifier le schéma de couleur par défaut. Peut être "red", "blue", "green".
+  themeVariant = "blue"
+
 # Pour la fonctionnalité de recherche
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
