@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Basics on MSX-coding</title>
-    <link>sfranck72.github.io/msx-coding/basics/</link>
+    <link>/basics/</link>
     <description>Recent content in Basics on MSX-coding</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <lastBuildDate>Wed, 23 Oct 2019 01:48:00 +0200</lastBuildDate>
     
-	<atom:link href="sfranck72.github.io/msx-coding/basics/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/basics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Test 1</title>
-      <link>sfranck72.github.io/msx-coding/basics/first-content/</link>
+      <link>/basics/first-content/</link>
       <pubDate>Wed, 23 Oct 2019 01:51:55 +0200</pubDate>
       
-      <guid>sfranck72.github.io/msx-coding/basics/first-content/</guid>
+      <guid>/basics/first-content/</guid>
       <description>Tuto 1 Pour débuter l&amp;rsquo;apprentissage de l&amp;rsquo;assembleur.
 Outils : *Tiasm (assembleur) *blueMSX (émulateur) *Context Editor (éditeur de texte)</description>
     </item>
