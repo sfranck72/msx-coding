@@ -12,9 +12,19 @@
     
     
     <item>
+      <title>01-introduction</title>
+      <link>/tuto-asm-01/01/01introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/01/01introduction/</guid>
+      <description>Outils nécessaires:  Tiasm (assembleur) blueMSX (émulateur) Context Editor (éditeur de texte)  Le but de ce blog est de présenter le plus simplement possible l&amp;rsquo;utilisation de l&amp;rsquo;assembleur sur MSX. Quitte à vulgariser, je tente de regrouper ici, ce que je n&amp;rsquo;ai pu trouver ailleurs sur le net afin de m&amp;rsquo;initier à l&amp;rsquo;assembleur.
+Je me suis procuré le livre suivant : MSX Programmes en langage machine de Steve WEBB. Ce livre contient notamment un programme réalisé en assembleur.</description>
+    </item>
+    
+    <item>
       <title>02-structure</title>
       <link>/tuto-asm-01/02/02structure/</link>
-      <pubDate>Wed, 23 Oct 2019 18:56:28 +0200</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/tuto-asm-01/02/02structure/</guid>
       <description>Je vais présenter uniquement ce qui est utile pour débuter le programme assembleur.
@@ -26,13 +36,17 @@ Le MSX c&amp;rsquo;est un processeur Z80 (le coeur). Il discute avec 3 organes p
     </item>
     
     <item>
-      <title>01-introduction</title>
-      <link>/tuto-asm-01/01/01introduction/</link>
-      <pubDate>Wed, 23 Oct 2019 01:51:55 +0200</pubDate>
+      <title>03-Afficher un caractère</title>
+      <link>/tuto-asm-01/03/03affchr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/tuto-asm-01/01/01introduction/</guid>
-      <description>Outils nécessaires:  Tiasm (assembleur) blueMSX (émulateur) Context Editor (éditeur de texte)  Le but de ce blog est de présenter le plus simplement possible l&amp;rsquo;utilisation de l&amp;rsquo;assembleur sur MSX. Quitte à vulgariser, je tente de regrouper ici, ce que je n&amp;rsquo;ai pu trouver ailleurs sur le net afin de m&amp;rsquo;initier à l&amp;rsquo;assembleur.
-Je me suis procuré le livre suivant : MSX Programmes en langage machine de Steve WEBB. Ce livre contient notamment un programme réalisé en assembleur.</description>
+      <guid>/tuto-asm-01/03/03affchr/</guid>
+      <description>(La théorie) Un caractère affiché par le VDP c&amp;rsquo;est 3 tables auxquelles on devra donner des instructions:
+ TNP (position à l&amp;rsquo;écran)
+ TGP (la forme du caractère)
+ TC (la couleur du caractère et du fond de celui-ci)
+  TNP  En mode SCREEN 1, on a vu que la TNP débute à l&amp;rsquo;adresse 6144.
+ On sait aussi qu&amp;rsquo;en SCREEN 1 on a 32 colonnes pour 24 lignes (pour le texte).</description>
     </item>
     
   </channel>

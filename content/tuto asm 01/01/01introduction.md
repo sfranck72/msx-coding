@@ -1,7 +1,6 @@
 ---
 title: "01-introduction"
-date: 2019-10-23T01:51:55+02:00
-draft: false
+weight: 5
 ---
 
 ### Outils nécessaires:

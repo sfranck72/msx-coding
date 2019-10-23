@@ -9,21 +9,21 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: MSX-coding</title>
+    <title>03-Afficher un caractère :: MSX-coding</title>
 
     
-    <link href="/css/nucleus.css?1571864988" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1571864988" rel="stylesheet">
-    <link href="/css/hybrid.css?1571864988" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1571864988" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1571864988" rel="stylesheet">
-    <link href="/css/auto-complete.css?1571864988" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1571864988" rel="stylesheet">
-    <link href="/css/theme.css?1571864988" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1571864988" rel="stylesheet">
+    <link href="/css/nucleus.css?1571864987" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571864987" rel="stylesheet">
+    <link href="/css/hybrid.css?1571864987" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571864987" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571864987" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571864987" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571864987" rel="stylesheet">
+    <link href="/css/theme.css?1571864987" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571864987" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1571864988"></script>
+    <script src="/js/jquery-3.3.1.min.js?1571864987"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -33,7 +33,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/tuto-asm-01/03/03affchr/">
     <nav id="sidebar" class="">
 
 
@@ -68,14 +68,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1571864988"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1571864988"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1571864987"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571864987"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1571864988"></script>
+<script type="text/javascript" src="/js/search.js?1571864987"></script>
 
     
   </div>
@@ -92,7 +92,7 @@
   
     
     <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
-        
+        parent
         
         
         ">
@@ -154,7 +154,7 @@
  
   
     
-      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item ">
+      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item active">
         <a href="/tuto-asm-01/03/03affchr/">
         03-Afficher un caractère
         
@@ -219,7 +219,13 @@
             
           
           
-            <a href='/'>Accueil</a> > Categories
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 03-Afficher un caractère
+          
+         
           
          
           
@@ -230,7 +236,22 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li><a href="#la-théorie">(La théorie)</a>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#tnp">TNP</a></li>
+<li><a href="#tgp">TGP</a></li>
+<li><a href="#tc">TC</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -246,7 +267,7 @@
           
             <h1>
               
-              Categories
+              03-Afficher un caractère
             </h1>
           
 
@@ -256,15 +277,118 @@
 
 
 
+<h1 id="la-théorie">(La théorie)</h1>
+
+<p>Un caractère affiché par le VDP c&rsquo;est 3 tables auxquelles on devra donner des instructions:</p>
 
 <ul>
-	
+<li><p><strong>TNP (position à l&rsquo;écran)</strong></p></li>
+
+<li><p><strong>TGP (la forme du caractère)</strong></p></li>
+
+<li><p><strong>TC (la couleur du caractère et du fond de celui-ci)</strong></p></li>
 </ul>
+
+<hr />
+
+<h4 id="tnp">TNP</h4>
+
+<blockquote>
+<p>En mode SCREEN 1, on a vu que la TNP débute à l&rsquo;adresse 6144.</p>
+</blockquote>
+
+<p>On sait aussi qu&rsquo;en SCREEN 1 on a <strong>32 colonnes pour 24 lignes</strong> (pour le texte).
+Cela donne <strong>768 positions possibles à l&rsquo;écran (32 x 24 = 768)</strong>.</p>
+
+<p>Ces positions vont de gauche à droite (comme le fonctionnement d&rsquo;une machine à écrire), de la position 0 à 31 pour la première ligne, puis passe à la ligne 2 et poursuit la numérotation jusqu&rsquo;à la dernière position N° 768 en bas à droite.</p>
+
+<p>Voici l&rsquo;écran telle qu&rsquo;il est en SCREEN 1 :
+<img src="/tuto asm 01/03/images/TNP.png?classes=shadow" alt="Stucture du MSX" />
+<center> <em>TNP Screen 1</em> </center></p>
+
+<p>Toutes les positions sont des adresses mémoires qui se suivent.
+Sachant que la TNP  débute à l&rsquo;adresse 6144, on sait maintenant que cette adresse correspond à la position 0.
+Si on veut afficher le caractère à la position 5, on va simplement faire 6144+5 et on aura l&rsquo;adresse où afficher le caractère: 6149</p>
+
+<hr />
+
+<h4 id="tgp">TGP</h4>
+
+<p>On a vu que c&rsquo;était la table qui abrite les formes des caractères.
+<strong>Cette table contient 256 caractères numérotés</strong> sous la norme standard internationale ASCII.</p>
+
+<p><img src="/tuto asm 01/03/images/ascii.png?classes=shadow" alt="Table des caractères" />  <center> <em>Table des caractères</em> </center></p>
+
+<p>Un exemple avec le tableau ci-dessus :<br />
+Vous voulez le code ASCII de <strong>la lettre &lsquo;A&rsquo;</strong>, vous prenez le N° de ligne et de colonne (respectivement), ici 4 et 1, vous l&rsquo;assemblez et <strong>cela donne du hexadécimal : 41</strong></p>
+
+<p>En assemblage on utilise beaucoup l&rsquo;hexadécimal pour des raisons que je n&rsquo;expliquerai pas ici.<br />
+Mais il est facile de traduire de l&rsquo;hexadécimal vers le décimal (et inversement), avec une calculatrice.</p>
+
+<p>Celle de Windows le fait très bien, il suffit de choisir dans le menu : <em>Affichage/Programmeur</em>.</p>
+
+<p>Vous cochez :
+<img src="/tuto asm 01/03/images/calc.jpg?classes=shadow" alt="Stucture du MSX" /></p>
+
+<p>Vous rentrez le nombre <strong>41</strong>, il ne vous reste plus qu&rsquo;à cocher</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Déc</label></li>
+</ul>
+
+<p>et vous obtenez du décimal, dans notre cas 65, qui est le n° ASCII de la lettre <strong>&lsquo;A&rsquo;</strong> que reconnait la TGP, ouf !!!</p>
+
+<p>Juste pour information, l&rsquo;adresse de la lettre <strong>&lsquo;A&rsquo;</strong> dans la TGP n&rsquo;est pas <strong>65</strong>.
+Chaque caractère est défini dans une grille de 8 x 8 (comme un sprite simple).</p>
+
+<p>Donc chaque caractère prend 8 adresses mémoires successives dans la TGP.</p>
+
+<p>La TGP débute en  0 (SCREEN 1), notre <strong>&lsquo;A&rsquo;</strong> est le 65ème, donc son adresse de début de forme est :
+<strong>Adresse de début de la TGP + 65*8 = 0 + 520 = 520</strong></p>
+
+<p>Si on voulait modifier la forme du <strong>&lsquo;A&rsquo;</strong> il faudrait que l&rsquo;on modifie les valeurs des adresses 520 à 527 (8 octets), mais on va pas le faire dans notre exemple.</p>
+
+<p><img src="/tuto asm 01/03/images/char.jpg?classes=shadow" alt="Charactère A" /></p>
+
+<p>Avec l&rsquo;adresse et le code du caractère, on est déjà capable de l&rsquo;afficher, la couleur est optionnelle.
+On va quand même voir comment la TC fonctionne.</p>
+
+<hr />
+
+<h4 id="tc">TC</h4>
+
+<p>Pour modifier cette table, il nous faut 2 informations :</p>
+
+<ul class="task-list">
+<li><label><input type="checkbox" checked disabled class="task-list-item"> L&rsquo;adresse du caractère dans cette table.</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> Le calcul de sa couleur.</label></li>
+</ul>
+
+<p>Dans notre exemple, le <strong>&lsquo;A&rsquo; c&rsquo;est le numéro 65</strong>, on le divise par 8 et on ajoute ce résultat au début de l&rsquo;adresse de la table (8192 en SCREEN1).
+<strong>(65:8) + 8192 = 8200</strong> (on ne retient que la part entière).</p>
+
+<blockquote>
+<p><strong>8200 c&rsquo;est l&rsquo;adresse du &lsquo;A&rsquo; dans la TC.</strong></p>
+</blockquote>
+
+<p>Pour la couleur (16 couleurs disponibles en SCREEN 1), le calcul est :<br />
+<strong>Couleur du caractère x 16 + couleur de fond du caractère</strong>.
+Pour un caractère Magenta (couleur 13) et Fond Blanc (couleur 15) cela donne:<br />
+    <strong>13 x 16 + 15 = 223</strong></p>
+
+<p>Donc si on veut modifier une couleur, on passe par cette table et on modifie la valeur de l&rsquo;adresse 8200 en lui mettant 223.
+<img src="/tuto asm 01/03/images/affchr.jpg?classes=shadow" alt="Charactère A" />
+<center><em>Affiche le caractère &lsquo;A&rsquo; à l&rsquo;écran</em></center></p>
+
+<p>Voilà, on va mettre tout cela en application en utilisant enfin un assembleur pour MSX.<br />
+L&rsquo;article suivant va uniquement parler de la mise en place des outils pour programmer en assembleur.<br />
+C&rsquo;est le préalable à la mise en pratique de ce que nous avons vu jusqu&rsquo;ici.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -297,8 +421,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -312,6 +434,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -344,6 +469,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -368,8 +494,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/tuto-asm-01/02/02structure/" title="02-structure"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/tuto-asm-01/" title="Tuto ASM 01" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/tuto-asm-01/01/01introduction/" title="01-introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -379,19 +507,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1571864988"></script>
-    <script src="/js/perfect-scrollbar.min.js?1571864988"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1571864988"></script>
-    <script src="/js/jquery.sticky.js?1571864988"></script>
-    <script src="/js/featherlight.min.js?1571864988"></script>
-    <script src="/js/highlight.pack.js?1571864988"></script>
+    <script src="/js/clipboard.min.js?1571864987"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571864987"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571864987"></script>
+    <script src="/js/jquery.sticky.js?1571864987"></script>
+    <script src="/js/featherlight.min.js?1571864987"></script>
+    <script src="/js/highlight.pack.js?1571864987"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1571864988"></script>
-    <script src="/js/learn.js?1571864988"></script>
-    <script src="/js/hugo-learn.js?1571864988"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571864987"></script>
+    <script src="/js/learn.js?1571864987"></script>
+    <script src="/js/hugo-learn.js?1571864987"></script>
 
-    <link href="/mermaid/mermaid.css?1571864988" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1571864988"></script>
+    <link href="/mermaid/mermaid.css?1571864987" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571864987"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
@@ -399,3 +527,4 @@
 
   </body>
 </html>
+

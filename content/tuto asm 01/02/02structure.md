@@ -1,7 +1,6 @@
 ---
 title: "02-structure"
-date: 2019-10-23T18:56:28+02:00
-draft: false
+weight: 10
 ---
 
 Je vais présenter uniquement ce qui est utile pour débuter le programme assembleur.
