@@ -1,0 +1,36 @@
+[
+{
+	"uri": "/",
+	"title": "Home",
+	"tags": [],
+	"description": "",
+	"content": " Thème Hugo learn Hugo-theme-learn est un thème pour Hugo, un générateur de site statique, rapide et modern, écrit en Go. Tandis que Hugo est souvent utilisé pour des blogs, ce thème multi-langue est entièrement conçu pour la documentation.\n"
+},
+{
+	"uri": "/basics/first-content/",
+	"title": "Test 1",
+	"tags": [],
+	"description": "",
+	"content": " Tuto 1 Pour débuter l\u0026rsquo;apprentissage de l\u0026rsquo;assembleur.\nOutils : *Tiasm (assembleur) *blueMSX (émulateur) *Context Editor (éditeur de texte)\n"
+},
+{
+	"uri": "/basics/",
+	"title": "Basics",
+	"tags": [],
+	"description": "",
+	"content": "Tuto 1\n#Basics\nPour débuter l\u0026rsquo;apprentissage de l\u0026rsquo;assembleur.\n"
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
