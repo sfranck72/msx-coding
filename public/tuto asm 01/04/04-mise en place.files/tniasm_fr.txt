@@ -1,0 +1,755 @@
+﻿---------------------------------------------------------------------------
+                               tniASM v0.45
+                      (c) 2000-2011 - The New Image
+
+                      Programmé par Patriek Lesparre
+
+                          http://tniasm.tni.nl/
+                          e-mail: tniasm@tni.nl
+---------------------------------------------------------------------------
+
+Chapitre 1: Introduction
+-------------------------
+
+    1.1 Qu'est que c'est ?
+
+        tniASM est un cross-assembleur pour Z80, R800 et GBZ80.
+	Voici quelque unes des ses possibilités :
+
+        - conception Multi-pass (traitements)
+        - Assembleur conditionnel
+        - Méchanisme de Label local
+        - Analyseur syntaxique 32-bit étendu intégrant des paramétrages d'exécution
+        - Fichiers sources et binaires intégrés
+        - Blocs de commentaires empilables
+        - Multiples formats possibles pour les fichiers de sortie et fichiers patchés
+
+    1.2 Pourquoi ?
+
+        Pourquoi avoir écrit un nouvel assembleur ? Bonne question !
+	Premièrement, j'avais besoin d'apprendre le langage C et il n'y 
+	a pas de meilleure méthode pour apprendre un nouveau langage 
+	que d'écrire un programme avec, pour ce que vous avez besoin.
+	Cela m'amène à la seconde raison pour laquelle j'ai écrit tniASM,
+	qui est que je n'ai pas trouvé d'autre cross-assembleur qui
+	satisfasse l'ensemble de mes attentes et besoins.
+	
+        A cause de tout cela, et peut-être du fait que je n'avais jamais 
+	programmé un assembleur/décompileur avant, tniASM ne ressemble
+	à aucun autre assembleur. Il est assez particulier et peut-être
+	déroutant au premier abord. Cependant, il répond parfaitement 
+	à mon besoin, et j'espère, au votre aussi.
+	
+    1.3 tniASM et les passes (traitements)
+
+        La plupart des assembleurs font 2 traitements (pass), une pour récolter 
+	l'information des labels et une autre pour y intégrer les références 
+	et générer le fichier de sortie.
+
+        tniASM procède différemment. le fichier généré en sortie est un fichier
+	pass à part entière, auparavant tniASM va faire autant de passes
+	qu'il est nécessaire pour comparer les expressions.
+
+        Concrêtement, tniASM va faire 2 pass plus un pass supplémentaire
+	pour chaque niveau de référencement induit, jusqu'à 5 passes au total.
+
+    1.4 tniASM Syntaxe de l'assembleur
+
+        tniASM a sa propre syntaxe d'assemblage pour les processeurs qu'il supporte.
+	N'ayez pas peur, les différences sont minimes. Référez vous aux chapitres 			2.7 et suivants pour les différences concernant les règles standards.
+
+    1.5 Utiliser tniASM
+
+        tniASM est très facile à utiliser. Tapez juste :
+
+        tniasm nomdufichier
+
+        tniASM va essayer d'assembler 'nomdufichier' et générer le code machine
+	dans le fichier 'tniasm.out'.
+
+        Si un nom de fichier sans extension est donné et qu'il y a une erreur,
+	tniasm va rajouter l'extension ".asm" et tenter d'assembler à nouveau.
+
+        Si vous voulez utiliser un fichier de sortie différent de 'tniasm.out'
+	et que vous ne vouliez pas utiliser la pseudo instruction FNAME pour cela,
+	vous pouvez rajouter dans la ligne de commande un second nom de fichier
+	et tniASM va utiliser celui-ci comme nom de fichier en sortie.
+
+  1.5.1 tniASM Fichiers générés par l'assemblage
+
+        Comme il a été dit dans le chapitre 1.5, tniASM va normalement sortir
+	un fichier code appelé 'tniasm.out'. Vous pouvez modifier cela en 
+	utilisant l'instruction FNAME (voir chapitre 2.5.5).
+
+        tniASM va aussi générer un fichier de la table des symboles, appelé 
+	'tniasm.sym', qui contient les valeurs de tous vos labels de votre programme.
+	C'est représenté sous la forme 'label: EQU valeur' ainsi cela peut être intégré
+	via un fichier externe avec l'instruction INCLUDE directement.
+
+
+        tniASM crée aussi un fichier temporaire appelé 'tniasm.tmp' à usage spécifique
+	tniASM uniquement.
+
+
+Chapitre 2: Le langage tniASM 
+-----------------------------
+
+    2.1 Sensibilité de la casse
+
+        Pour faire simple, il n'y en a pas. 'LabelA' et 'labela' c'est exactement
+	la même chose pour tniASM, comme 'ldir' and 'LdiR'.
+
+    2.2 Format d'une ligne de code TNIASM
+
+        C'est un point sur lequel tniASM diffère de la plupart des assembleurs.
+	D'habitude, une ligne de code se présente sous ce format :
+
+        [label:] [instruction [operandes]] [;commentaire]
+
+        Ce qui veut dire qu'il est accepté toute combinaison de 3 champs
+	'label' , 'instruction' et 'commentaire'. 
+
+        Dans un sens, tniASM utilise le même format, mais il accepte une suite
+	de définitions de labels et instructions sur une même ligne. seul le champs
+	de commentaire ne peut exister qu'une fois par ligne. Voici un exemple :
+
+        [ [label:] | [instruction [operandes]] ]* [;commentaire]
+
+        Cela rend tniASM totalement capable d'assembler une ligne comme ceci :
+
+        start: JP begin exit: LD BC,0042h CALL dos begin: LD DE,text
+
+        En plus de cette possibilité, tniASM n'est pas restreint par un espace
+	dans la ligne de code. Par exemple, les labels peuvent avoir un espace
+	qui les précèdent et les instructions peuvent ne pas avoir d'espspace
+	qui les précèdent, ce qui veut dire qu'une instruction peut directement
+	suivre une définition de label. Idem pour les commentaires.
+
+  2.2.1 Complément sur les Labels
+     
+        Une définition de label doit se terminer par deux points (':').
+	La longueur du label est pratiquement illimitée. Les caractères
+	valident pour les labels peuvent être des lettres, des nombres, 
+	'_', '.', '?', '!', '~', '@', et '#'. Le premier caractère d'un label
+	ne peut pas être un nombre.
+
+        Il est possible de de définir des mots réservés (comme 'pop', 'ld' ou 'hl')
+	pour des labels, mais ils doivent être préfixés avec '&' quand on les utilisent.
+	Vous pouvez coder ainsi : 
+
+             call &pop
+             {...}
+        pop: pop hl
+             pop de
+             pop bc
+             jp [hl]
+
+        tniASM supporte aussi les labels locaux. Un label local est toujours local
+	d'un précédent label non local dans le code source. Un label est local
+	quand le premier caractère est un '.'.
+
+        On va clarifier cela avec un exemple :
+
+        main:   ld   b,8
+        .loop:  call faitquelquechose
+                djnz .loop
+
+        sub:    ld   b,8
+        .loop:  call faitquelquechose
+                djnz .loop
+                
+        Ci-dessus, 4 labels différents sont définis : "main",
+        "main.loop", "sub", "sub.loop".
+	Du fait de cette possibilité, vous pouvez accèder à des labels locaux
+	en dehors du périmètre du label courant non local. Comme ceci :
+
+        main:   {...}
+        .end:   ret
+
+        sub:    {...}
+                jp   main.end
+        .end:   ret
+
+        Ou d'une autre façon, créer des labels qui sont locaux en dehors 
+	du label non local :
+
+        main:   ld      a,[.valeur]
+                {...}
+
+        sub:    {...}
+
+        main.valeur: db  0
+
+  2.2.2 Le séparateur
+
+        Le caractère '|' est utilisé comme séparateur. Vous pouvez l'utiliser
+	pour avoir plus d'une instruction par ligne. En fait, le séparateur
+	n'est pas nécessaire la plupart du temps puisque tniASM peut  détecter
+	automatiquement que la ligne suivante "add a,a call jump ret" comporte
+	en fait 3 instructions différentes. Séparer les instructions par '|'
+	est plus joli à voir et peut rendre plus lisible le code.
+	Cependant, dans une ligne comme "add a,34 and 3 xor 255" tniASM comprend
+	que vous voulez dire "add a,253" et pas 3 instructions séparées.
+	Pour être sûr que tniASM génère le code que vous voulez, utilisez
+	le séparateur.
+
+  2.2.3 Complément sur les commentaires
+
+        Il est commun d'utiliser le point virgule (';') pour les commentaires.
+	Il peut être placé n'importe où sur une ligne et tout ce qui est derrière 
+	sera ignoré jusqu'à la prochaine ligne.
+
+        En plus de ce type de commentaires, tniASM supporte aussi les blocs
+	de commentaires. Les caractères '{' et '}' marquent respectivements 
+	le début et la fin d'un bloc de commentaires. Il peuvent être placés
+	n'importe où dans un fichier, tout ce qui est à l'intérieur sera ignoré.
+	Les blocks de commentaires sont empilables avec un niveau de profondeur 
+	presque infini.
+
+    2.3 Les constantes
+
+        Il y a 3 sortes de constantes dans tniASM : numérique, caractère et 
+	chaîne de caractères. Puisque tniASM est un assembleur 32 bit, 
+	les constantes sont des valeurs intégrales signées 32 bit, allant de
+	-2147483648 (80000000h) à 2147483647 (7FFFFFFFh).
+
+  2.3.1 Constantes numériques
+
+        Les constantes numériques peuvent être représentées en décimal,
+	hexadécimal, binaire et octal. Elles supportent le format suivant :
+
+        Décimal    : 123
+                     123d
+        Hexadecimal: 1234h (ne peut commencer par une lettre, utiliser '0ABCDh' etc.)
+                     $1234
+                     0x1234
+        Binaire    : 11100100b (peut contenir un espace, ex: '1110 0100 b')
+                     %11100100 ( "   "       "      "     "  '% 1110 0100')
+        Octal      : 123o
+                     123q
+
+  2.3.2 Constantes de chaîne de caractères
+
+        Une constante de chaîne de caractères est tout ce qui est compris
+	entre apostrophes ou guillements de plus de 4 caractères.
+	Elle sont utilisées pour des commandes comme DB/DW, INCLUDE et FNAME.
+	Les constantes de chaîne de caractères ne peuvent être utilisées
+	dans les expressions régulières.
+
+        exemple:
+          DB   "une 'guillemet' chaîne peut contenir des apostrophes"
+          DB   'et une "apostrophe" chaîne peut contenir  des guillemets'
+
+  2.3.3 Constantes de caractères
+
+        Les constantes de caractères suivent les mêmes règles que les chaînes,
+	excepté qu'elles peuvent être utilisées dans les expressions.
+	Elles peuvent aller jusqu'à une taille de 4 caractères et sont
+	stockées en bit faible en priorité. Ainsi la constante 'A' est stockée 
+	à l'adresse 41h, 'AB' en 4241h (ou 41h, 42h), 'ABC' en 434241h.
+	Avec DB/DW, les constantes de caractères sont toujours considérées
+	comme un constante de chaîne sauf à l'intérieur d'une expression.
+
+        exemple:
+          DB 'abcd'           ; c'est 'a','b','c','d'.
+          DB +"abcd",1+'a'    ; c'est 'a','b'. Comme chaque chaîne est à
+			      ;	l'intérieur d'une expression, elles sont
+			      ;	traitées comme constantes de caractères.
+          DB 'a'+1            ; c'est une erreur, car ce n'est pas considéré
+			      ;	comme étant à l'intérieur d'une expression
+          DB ('abcd' >> 8)    ; c'est 'b'
+
+    2.4 Les expressions
+
+        Les expressions sont évaluées sur des entiers arithmétiques 32-bit signés.
+	Une expression est composée d'une ou deux autres constantes, combinées
+	à zéro ou à d'autres opérateurs. 2 caractères spéciaux peuvent être utilisés
+	dans les expressions : '$' et '$$'. 
+	Expressions are evaluated in 32 bit signed integer arithmetic. An
+        expression consists of one or more constants, combined with zero or
+        more operators. Two special tokens can be used in expressions: '$'
+        and '$$'. Ils représentent l'adresse assemblée en cours (program counter/
+	pointeur_registre qui contient l'adresse mémoire de l'instruction
+	en cours d'exécution) et la position de fichier respectivement, positionnés
+	au début de l'instruction courante.
+
+        Exemple de codification (nop = Instruction commune de langage d'assemblage
+	n'ayant aucun effet) :
+
+        nop
+        nop
+        jr $-2  ; saut pour revenir au premier nop
+
+        Tous les opérateurs supportés sont listé ci-dessous. les opérateurs avec un
+	égale sont à lire de la gauche vers la droite.
+
+	Biens sûr, toutes les priorités d'opérations peuvent être gérées
+	avec les règles de parenthèses '(' et ')'.
+
+
+  2.4.1 Priorités de Niveau 0 - Les opérateurs de comparaison
+
+        Les opérateurs de comparaison sont :
+
+        x = y   égalité
+        x <> y  non égalité
+        x >< y   "    "
+        x != y   "    "
+        x < y   inférieur à
+        x > y   supérieur à
+        x <= y  inférieur ou égal
+        x =< y   "    "   "    "
+        x >= y  supérieur ou égal
+        x => y   "    "   "    "
+
+        Contrairement au langage C, les opérateurs de comparaison utilisent -1
+	pour 'vrai' et 0 pour 'faux' (au lieu de 1 et 0). De ce fait, il n'y a pas 
+	besoin de la version boléenne des opérateurs AND, OR et XOR, puisque
+	il fonctionnent sur le même principe que ces opérateurs bit à bit.
+
+        Les opérateurs opérationnels permettent des expression complexes comme :
+
+        x*(1+2*(x<0))
+
+        qui donne la valeur absolue du 'x'.
+
+  2.4.2 Priorités de Niveau 1 - Addition et opérateurs bit à bit (X)OR
+
+        Ils devraient être assez explicites. tniASM choisit d'utiliser les mots clés
+	'OR' et 'XOR' (comme en BASIC) au lieu des caractères '|' et '^' (comme en C).
+
+        x + y   Addition
+        x - y   Soustraction
+
+        x OR y  opérateur bit à bit OR
+        x XOR y opérateur bit à bit XOR
+
+  2.4.3 Priorités de Niveau 2 - Multiplicateur et opérateurs AND
+
+        x ^ y   Exponentielle
+        x * y   Multiplication
+        x / y   Division
+        x MOD y Modulo
+
+        x << y  Décalage vers la gauche 
+        x >> y  Décalage vers la droite (non signé)
+
+        x AND y Bit à bit AND
+
+  2.4.4 Priorités de Niveau 3 - Opérateurs unaires
+
+        + x     unaire plus
+        - x     unaire moins
+        NOT x   premier complément
+
+    2.5 Pseudo Instructions
+
+  2.5.1 DB/DW
+
+        Definit une (chaîne de) d'octet(s)/mot(s).
+
+        DB   255
+        DB   "bla",13,10
+        DW   'AB',4000h
+        DW   "string may be odd"        ; ce type de chaîne aura un padding fixé à 0
+
+  2.5.2 DC
+
+        Definit une chaîne qui se termine par un bit 7 positionné.
+
+        DC   "TOKEN"            ; pareil que DB "TOKE","N" OR 128
+        DC   "LIST","STOP"      ; définit 2 chaînes, toutes les deux de 7 bit 
+				; positionnés
+
+  2.5.3 DS
+
+        Definit un espace (en octets).
+
+        DS   10                 ; définit 10 octets à 0
+        DS   10,255             ; définit 10 octets à 255
+        DS   4000h-$            ; positionne de 0 jusqu'à l'adresse 4000h
+        DS   0                  ; ne fait rien
+        DS   -1                 ; idem pour les valeurs négatives
+
+  2.5.4 EQU
+
+        Assigne une valeur à un label. Un EQU doit suivre un label sur la même ligne.
+
+        bankstart:      EQU  4000h
+                        ORG  bankstart          ; comparable à org 4000h
+
+  2.5.5 FNAME
+
+        Spécifie le fichier de sortie. Utilisez FNAME pour que tniASM crée un nom
+	de fichier en sortie différent de 'tniasm.out'. Vous pouvez utiliser FNAME
+	comme vous l'entendez dans votre code source afin d'adresser des éléments
+	à différents fichiers.
+	FNAME positionne aussi FORG à 0.
+
+        FNAME "output.bin"      ; le fichier assemblé est maintenant 'output.bin'
+        {...}
+
+        Au lieu de créer un nouveau fichier, on peut paramétrer tniASM pour qu'il
+	génère dans un fichier existant en spécifiant un 2eme paramètre à FNAME.
+	Ce second paramètre est la localisation dans ce fichier existant où tniASM
+	va générer le nouveau code, et FORG est automatiquement positionné avec
+	cette valeur.
+
+        FNAME "output.bin",1024 ; le nouveau code généré débute à la position 1024
+				; dans le fichier existant 'output.bin'
+        FNAME "output.bin",0    ; le nouveau code généré débute à la position 0
+				; donc au début mais dans un fichier existant 
+				; s'appelant output.bin'
+
+  2.5.6 FORG
+
+        Postionne le fichier généré. Vous pouvez utiliser FORG pour obliger tniASM
+	à générer à une position spécifique. Si la position dépasse la taille 
+	du fichier, il sera positionné à 0.
+	Quand FORG n'est pas spécifié, la position de départ sera 0.
+
+  2.5.7 INCBIN
+
+        Inclut un fichier binaire. L'instruction INCBIN intègre un fichier 
+	binaire dans le fichier courant qui sera généré. C'est particulièrement 
+	utile pour embarquer des données graphiques ou d'imposantes tables 
+	de données que vous ne voulez pas voir apparaitre dans votre code source
+	sous la forme d'une longue liste de DB.
+
+        music1: INCBIN  "music1.bin"
+        .end:
+
+        INCBIN prend 1 ou 2 paramètres. Le premier c'est le décalage dans
+	le fichier à inclure. Le second est la longueur totale du bloc de données
+	à inclure.
+
+        INCBIN "basic.bin",7            ; inclut avec un décalage de 7 à partir du début
+        INCBIN "cutout.bin",1024,512    ; inclut 512 octets à partir du saut 1024
+
+  2.5.8 INCLUDE
+
+        L'instruction INCLUDE intègre un autre fichier dans le code source, son niveau
+	de profondeur dépend de la mémoire disponible.
+
+        {...}
+        INCLUDE "incthis.asm"
+        {...}
+
+  2.5.9 ORG
+
+        ORG  dispose de 2 arguments. Le premier donne la position assemblée (le pointeur)
+	à une adresse, alors que le deuxième argument donne l'adresse de l'allocation
+	maximale à ne pas dépasser pour cette 'section'. Si l'adresse dépasse, tniASM
+	remontera une alerte. Cette alerte ignore toutes les déclarations de PHASE.
+	Quand il n'y a pas de ORG définit, la position de début d'assemblage est 0.
+        
+        ORG  0c000h             ; Le code débutera à 0c000h
+        ORG  0c000h,0           ; idem à l'exemple précédent
+        ORG  4000h,7FFFh        ; débute à 4000h, alerte si on dépasse 7FFFh
+
+ 2.5.10 PHASE/DEPHASE
+
+        PHASE 'phase' la position d'assemblage à une adresse spécifiée.
+	C'est particulièrement utile pour re-adresser un code plus tard.
+	DEPHASE phase à la position d'assemblage initiale.
+	Une nouvelle définition de PHASE ou ORG entraine un DEPHASE de toute
+	précédente définition d'un PHASE.
+
+        ; Cet exemple ré-adresse la routine SetS#0 de son adresse courante
+	; à l'adresse 0C000h. Du fait de l'utilisation de PHASE/DEPHASE
+	; son label 'SetS#0' pointe toujours sur 0C000h.  
+
+
+                ORG     8000h
+
+                ld      hl,start
+                ld      de,SetS#0
+                ld      bc,SetS#0.end-SetS#0.start
+                ldir
+
+                {...}
+
+        SetS#0.start:
+                PHASE   0C000h
+        SetS#0: xor     a               ; position de V9938 S#0
+                out     [99h],a
+                ld      a,15+128
+                out     [99h],a
+                ret
+                DEPHASE
+        .end:
+
+ 2.5.11 RB/RW
+
+        Réserve un (nombre d') octet(s)/mot(s) comme données non initialisées.
+	C'est la même chose que DS, mais ne met pas à jour la position du fichier,
+	ni ne génère quoi que ce soit. Il met à jour simplement la position assemblée.
+	RB et RW sont utiles quand ils sont déclarés comme des variables en RAM.
+
+                ORG     0C000h
+        Var1:   RB      2               ; Var1 = 0C000h
+        Var2:   RW      1               ; Var2 = 0C002h
+        Var3:   RB      0               ; Var3 = 0C004h
+        Var4:   RW      -1              ; Var4 = 0C004h parce que zéro 
+                                        ; et les valeurs negatives sont ignorées
+
+    2.6 Assemblage conditionnel
+
+        Il est parfois utile que certaines portions de code soient assemblées
+	seulement si certaines conditions sont remplies. Par exemple quand
+	un code est écrit pour de la multi-plateforme en même temps (z80 et 
+	R800 par exemple), ou pour inclure/exclure du code debug.
+
+        tniASM apporte cette fonctionnalité au travers du IF-construct.
+	Sa forme basique est :
+
+        IF {operande} [{...}] [ELSE [{...}]] ENDIF
+
+        Du fait de la composante multi-pass de tniASM, cela permet d'utiliser
+	plusieurs références dans IF-constructs. Ils peuvent aussi être utilisés
+	au travers de sources de fichiers du périmètre. Le niveau de profondeur 
+	est pratiquement infini.
+
+  2.6.1 IF {expression}
+
+        L'expression est évaluée et considérée comme 'fausse' quand elle donne zéro
+	alors que tout autre résultat différent de zéro, est considéré comme 'vrai'.
+
+        loop:   {...}
+
+        IF $-loop < 128
+          djnz loop
+        ELSE
+          dec b
+          jp nz,loop
+        ENDIF
+
+  2.6.2 IFDEF {label}
+
+        Vérifie si un label a été précédemment déclaré.
+
+        R800:           ; écarte ce qui correspond à la version Z80
+
+        IFDEF R800 mulub a,b ELSE call mulub_a_b ENDIF
+
+        IFDEF R800 ELSE
+        mulub_a_b: {...}
+        ret
+        ENDIF
+
+  2.6.3 IFEXIST {chaîne}
+
+        Vérifie si un fichier existe. Voir le second exemple pour un petit truc,
+	qui marche avec l'IF-instruction.
+
+        IFEXIST "test" {...} ENDIF      ; do {...} if "test" existe
+        IFEXIST "test" ELSE {...} ENDIF ; do {...} if "test" n'existe pas
+
+  2.6.4 IFEXIST {label}
+
+        Similaire à IFDEF, mais vérifie  si un label existe indépendamment
+	d'où et quand il a été déclaré. Vous pouvez l'utiliser pour vérifier
+	si un label est déclarér plus loin dans le code.
+
+    2.7 Support Multi CPU 
+
+        tniASM peut assembler le code  de plusieurs CPU appelés Z80, R800
+	et d'un processeur appelé comunémment GBZ80. tniASM travaille 
+	par défaut en mode R800/msx.
+        Utiliser l'instruction "CPU", permet de basculer d'un mode à l'autre.
+	Cela peut être n'importe où dans le code.
+
+        Les modes son appelés "Z80", "R800" (avec l'alias "MSX") et "GBZ80".
+
+        CPU Z80         ; bascule vers le mode Z80
+        CPU R800        ; bascule vers le mode R800
+        CPU MSX         ; bascule vers le mode MSX
+        CPU GBZ80       ; bascule vers le mode GBZ80
+
+  2.7.1 mode Z80 
+
+        Ce mode n'accepte pas les opcodes R800 MULUB/MULUW, à part ça c'est
+	la même chose que le mode R800/MSX.
+
+        Les différences avec les règles de syntaxe du standard Z80 sont :
+
+
+        - [ and ] est accepté pour l'indirection, avec l'ajout du ( and ).
+	  Ainsi, si vous voulez lire un mot de l'adresse mémoire 4000h, 
+	  vous pouvez coder LD HL,[4000h] comme équivalent à LD HL,(4000h).
+
+	- Pour ADD, ADC, SUB, SBC, AND, XOR, OR et CP, l'accumulateur
+	  est optionnel.
+	  Ainsi CP A,B et CP B sont équivalents.
+
+	- IN [C] ou IN F,[C] peuvent être utilisés.(Z80 undocumented)
+
+	- IX et IY peut être décomposer en IXH, IXL, IYH, IYL respectivement.
+	  (Z80 undocumented)
+
+	- SLL (incluant l'alias SLI) est accepté (Z80 undocumented)
+
+	- PUSH et POP prend une liste registre, évalué de gauche à droite.
+
+	PUSH AF,BC,DE,HL ; pousse AF, BC, DE et HL dans cet ordre.
+        POP  HL,BC       ; rappelle HL et ensuite BC.
+
+  2.7.2 Mode R800 ou MSX 
+
+        Seuls les opcodes du Z80 et R800 sont acceptés.
+
+	Les différences avec les règles syntaxiques du standard R800 sont :
+
+        - Opcodes du Z80 et noms de registre.
+
+        - Règles tniASM Z80. (Chapitre 2.7.1)
+
+	- Notez que SLL a une fonction différente sur le R800 (undocumented).
+
+  2.7.3 GBZ80
+
+        Seuls les opcodes GBZ80 et extensions sont acceptées.
+
+        Les différences avec les règles syntaxiques du GBZ80 sont :
+
+        - LD A,(HLI) et LD A,(HLD) (et vice versa) sont traduits LDI A,[HL]
+          et LDD A,[HL].
+
+        - LD A,(n) et LD A,(C) (et vice versa) sont traduits LDH A,[n] et
+          LDH A,[C]. De plus ils ont des alias IN A,[x] et OUT [x],A.
+          LDH A,[n] et LDH [n],A peuvent prendre les valeurs entre 0-FF et
+          FF00-FFFF hexadécimal.
+
+        - ADD SP,d est traduit LD SP,SP+d.
+
+        - LDHL SP,d est traduit LD HL,SP+d.
+
+        - Règles tniASM Z80. (Chapitre 2.7.1)
+
+Chapitre 3: Autres sujets
+----------------------
+
+    3.1 Trucs et Astuces
+
+        Le meilleur truc que je peux vous donner quand vous travaillez avec tniASM,
+	est de conserver un fichier qui inclut tous les autres fichiers.
+	De sorte qu'il n'y ait pas de dépendances ingérables.
+
+        ; "exemple.asm"
+        ; Ceci est un exemple 'makefile'
+
+                fname   "example.com"
+                org     100h
+                include "frontend.asm"
+                include "main.asm"
+                include "backend.asm"
+
+                fname   "example.dat"
+                org     0
+                incbin  "stuff.dat"
+                include "somesubs.asm"
+
+    3.2 Historique
+
+	2 Novembre 2011, v0.45 Magnum mercy shot 
+        - Corrigé: Génération d'erreur pour LD L,IXL (or similaire) au lieu 
+	  de sortir LD IXL,IXL.
+        - Supporte maintenant les expressions pour les opérandes numériques corrigées
+	  des instructions IM, RST, BIT, RES et SET. Générait un résultat incorrect
+	  ou une erreur !
+        - Officiellement la dernière version de la série des v0.x. Voir Chapitre 3.3
+	  pour information à propos de tniASM V1.0.
+
+        2 Mars 2005, v0.44
+        - Corrigé: $ durant la PHASE
+
+        22 janvier 2005, v0.43
+        - L'opérateur != est maintenant accepté comme un alias de <>.
+        - Corrigé: un bug concernant IF-ELSE cause parfois des erreurs.
+        - Mise à jour du manuel (Chapitre 2.7.2, 3.3)
+
+        14 Novembre 2004, v0.42
+        - Corrigé: L'encapsulation d'un IF dans un bloc IF qui est résolu par un FAUX
+	  provoquait une boucle infinie.
+        - Corrigé: Définir un label local sans label parent retourne maintenant 
+	  un message d'erreur.
+
+        17 Septembre 2004, v0.41
+        - tniASM prends en charge maintenant les fichiers source en ASCII étendu.
+
+        4 Octobre 2003, v0.4 Edition spéciale #msxdev 
+        - Le second paramètre de commande spécifie maintenant le fichier de sortie.
+          (le même que celui qu'utilise la directive FNAME).
+	- Alloue des espaces autour des registres en accès indirect.
+	- PUSH et POP accepte une liste de registres, ils sont évalués de gauche
+	  à droite.
+	- La pseudo instruction DC est rajoutée., voir chapitre 2.5.2
+	- Manuel mis à jour pour prendre en compte les évolutions de la v0.35 et v0.4.
+
+        2 Octobre 2003, v0.35
+	- A la demande générale, la version est modifiée afin d'accepter 
+	  les () pour l'indirection, [] et () sont identiques maintenant. 
+
+        24 Décembre 2002, v0.3
+	- Assemblage 2 fois et demi plus rapide.
+	- Corrections :
+	  * Le fichier d'erreur INCBIN affichait un mauvais nom de fichier.
+	  * GBZ80 'LDI/LDD A,[HL]' causait des erreurs.
+	  * ORG sans argument d'envoyait pas d'alerte.
+	  * Les labels locaux peuvent changer de scope entre les passes.
+	  * Le perser d''INCLUDE' et 'CPU' est plus robuste.
+	  * Corrections mineures du manuel.
+
+        16 Septembre 2000, v0.2 MSX Fair Bussum Edition
+	- Assemblage conditionnel, voir chapitre 2.6
+	- Longueur de label pratiquement infini, voir chapitre 2.2.1
+	- Constantes octal numériques, voir chapitre 2.3.1
+	- Support multi-CPU (GBZ80 ajouté), voir chapitre 2.7
+	- Déclaration de données non initialisées, voir chapitre 2.5.11
+
+        14 Aout 2000, v0.1 Pré-Release
+
+    3.3 tniASM v1.0
+
+        tniASM v1.0 est complètement ré-écrit. C'est programme complètement différent.
+	Il s'affranchit de la connaissance des processeurs et de l'assemblage,
+	il est idéal pour les processeurs particuliers et même pour la
+	manipulation de fichiers non destinés à l'assemblage. Il reste quand même
+	dans la tradition de rester facile à utiliser tout en apportant des 
+	fonctionnalités puissantes.
+
+	La plus importante de toutes, et la base de tout, un macro-processeur très
+	puissant. Il apporte :
+	- Un support multiple de CPU, même dans un fichier source unique.
+	- Un assembleur paramétrable, utilisez pour cela les pseudo-instructions.
+	- Une capacité à rester compatible avec les autres assembleurs
+
+	tniASM v1.0 existe en version 32-bit Windows et 64-bit Linux,
+	et des macro-définitions pour :
+	- les processeurs Z80, R800, GBZ80 et Z380
+	- le code, les données et les zones de données réservées.
+	- une compatibilité avec la v0.45 tniasm
+
+	tniASM v1.0 est utilisé par tous les projets de The New Image et Infinite.
+	Vous pouvez participer aux beta tests de manière privée en faisant une 
+	donation minimum de 15 Euros au compte bancaire BIC:INGBNL2A, 
+	IBAN:NL42INGB0006268083d, de Patriek Lesparre à Almere, Pays-Bas.
+	N'oubliez pas de fournir votre adresse e-mail ! Si vous préférez régler 
+	par Paypal, utilisez Paypal, faites votre versement à paypal@tni.nl.
+
+	Les beta-testeurs recevront la dernière version de développement
+	et pourront donner leurs impressions sur le programme. La cible visée 
+	par tniASM v1.0 est publique, il est envisagé de le vendre 25 Euros,
+	mais les beta-testeurs le recevront gratuitement.
+	
+
+    3.4 Avertissements
+
+	- Toutes les marques déposées sont la propriétés de leur auteur.
+	- tniASM v0.45 est gratuit et peut être distribué gratuitement
+	  tant qu'il n'est pas modifié, ce fichier est dans les archives
+	  et ne fait pas partie d'un produit commercial.
+	- Son utilisation est sous votre propre responsablité. L'auteur n'est pas
+	  responsable pour les dommages occasionnés provenant d'une mauvaise
+	  utilisation du produit.
+---------------------------------------------------------------------------

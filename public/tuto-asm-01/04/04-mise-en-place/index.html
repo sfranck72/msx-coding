@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>02-Structure :: MSX-coding</title>
+    <title>04-Mise en place :: MSX-coding</title>
 
     
     <link href="/css/nucleus.css?1571874270" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tuto-asm-01/02/02structure/">
+  <body class="" data-url="/tuto-asm-01/04/04-mise-en-place/">
     <nav id="sidebar" class="">
 
 
@@ -120,7 +120,7 @@
  
   
     
-      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure" class="dd-item active">
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure" class="dd-item ">
         <a href="/tuto-asm-01/02/02structure/">
         02-Structure
         
@@ -158,7 +158,7 @@
  
   
     
-      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item ">
+      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item active">
         <a href="/tuto-asm-01/04/04-mise-en-place/">
         04-Mise en place
         
@@ -227,7 +227,7 @@
             
           
           
-            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 02-Structure
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 04-Mise en place
           
          
           
@@ -242,14 +242,17 @@
     <div class="wrapper">
 <nav id="TableOfContents">
 <ul>
-<li>
+<li><a href="#des-outils-de-développement">des outils de développement</a>
 <ul>
 <li>
 <ul>
-<li><a href="#rom">ROM</a></li>
-<li><a href="#ram">RAM</a></li>
-<li><a href="#registres-internes">Registres internes</a></li>
-<li><a href="#vdp">VDP</a></li>
+<li>
+<ul>
+<li><a href="#emulateur">EMULATEUR</a></li>
+<li><a href="#editeur-de-texte">EDITEUR DE TEXTE</a></li>
+<li><a href="#assembleur">ASSEMBLEUR</a></li>
+<li><a href="#context-touche-raccourci">CONTEXT-TOUCHE RACCOURCI</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -269,7 +272,7 @@
           
             <h1>
               
-              02-Structure
+              04-Mise en place
             </h1>
           
 
@@ -279,105 +282,178 @@
 
 
 
-<p>Je vais présenter uniquement ce qui est utile pour débuter le programme assembleur.</p>
+<h1 id="des-outils-de-développement">des outils de développement</h1>
 
-<p>Le MSX c&rsquo;est un processeur Z80 (le coeur).
-Il discute avec 3 organes principaux :</p>
-
-<ul>
-<li><strong>Le VDP : Un processeur qui gère l&rsquo;affichage écran (16ko de mémoire).</strong><br /></li>
-<li><strong>Le PSG : Un processeur qui gère le son.</strong><br /></li>
-<li><strong>Le PPI  : Un processeur qui gère le clavier notamment.</strong></li>
-</ul>
-
-<p>Revenons au Z80, il dispose de 3 sortes de mémoires :</p>
+<p>On va avoir besoin d&rsquo;installer 3 programmes :</p>
 
 <ul>
-<li><strong>La ROM.</strong><br /></li>
-<li><strong>La RAM.</strong><br /></li>
-<li><strong>Les registres internes.</strong></li>
+<li>Un émulateur (simule un MSX)<br /></li>
+<li>Un éditeur de texte (pour taper du code texte assembleur)<br /></li>
+<li>un assembleur (compile le code texte en code machine utilisable par un MSX)</li>
 </ul>
 
-<p><img src="/tuto asm 01/02/images/strucmsx.png?classes=shadow" alt="Stucture du MSX" /></p>
+<p>Pour cela j&rsquo;ai suivi les explications du site d&rsquo;un développeur anglais dont je vous donne l&rsquo;adresse de sa chaine Youtube :<br />
+<a href="https://www.youtube.com/playlist?list=PLONcFUnqCtricqf3iXpxIleJC_mw1t23m">Lets Make a Retro Game</a></p>
 
-<p>Les mémoires sont des cases. Pour pouvoir les différencier, on leur a donné des numéros que l&rsquo;on appelle Adresse (comme les numéros des maisons dans une rue).</p>
+<hr />
+
+<h4 id="emulateur">EMULATEUR</h4>
+
+<p>L&rsquo;émulateur MSX s&rsquo;appelle <em>blueMSX</em>, je vous invite à le télécharger à l&rsquo;adresse suivante dans la section téléchargement :  <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.bluemsx.com%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNG2n4MaGPUiuuND_BjcMgS_FM5mQg">http://www.bluemsx.com</a><br />
+Vous l&rsquo;installez où vous voulez, il n&rsquo;y a rien de particulier.<br />
+Quand vous le lancez pour la première fois, je vous invite à aller dans le le menu, choisir <em>Outils</em>, ensuite <em>Editeur de machine</em> et dans le champ <em>Configuration</em> vous sélectionnez <em>MSX-French</em> et vous cliquez sur le bouton [Lancer].<br />
+Vous avez un MSX francais qui démarre,vous validez par [Entrée] quand il vous demande la date.</p>
+
+<hr />
+
+<h4 id="editeur-de-texte">EDITEUR DE TEXTE</h4>
+
+<p>On va installer un éditeur de texte qui s&rsquo;appelle <strong>CONTEXT Editor</strong>, il est simple d&rsquo;utilisation et permettra de lancer la compilation avec des touches de raccourci.<br />
+Le liens de téléchargement est le suivant :<br />
+<a href="http://www.google.com/url?q=http%3A%2F%2Fwww.contexteditor.org%2F&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGgLv5_8lcGyj07z4qYWWiJwXSa-w">CONTEXT Editor</a><br />
+Installez en suivant la procédure proposée par défaut.</p>
+
+<p>Le développeur du site que j&rsquo;ai indiqué nous met à disposition un petit plugin qui permet de mettre en couleur le texte assembleur, il se trouve ici : <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.electricadventures.net%2FContent%2FLMARG%2FEP3%2FWLADXZ80Assembler.zip&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHwvRdn18DniOvbiXhpxZ_IQMXw1A">coloration de syntaxe</a></p>
+
+<p>Pour ajouter le colorateur syntaxique à CONTEXT il faut coller le fichier <code>WLA DX Z80 Assembler.chl</code> dans le dossier suivant :<br />
+<code>C:\Program Files (x86)\ConTEXT\Highlighters</code>
+Le dossier sera le suivant si vous êtes en mode Windows 32-bit :<br />
+<code>C:\Program Files\ConTEXT\Highlighters</code></p>
+
+<hr />
+
+<h4 id="assembleur">ASSEMBLEUR</h4>
+
+<p>Pour l&rsquo;assembleur, c&rsquo;est <strong>tniASM</strong> (v0.45).<br />
+Il est simple et pratique lui aussi.<br />
+Voici l&rsquo;adresse : <a href="http://www.google.com/url?q=http%3A%2F%2Fwww.tni.nl%2Fproducts%2Ftniasm.html&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNGwmumSQvXBQccdxanfXY0c4oAL0A">tniasm 0.45</a><br />
+Vous téléchargez la version gratuite et vous la dézippez dans le répertoire suivant sur votre PC :<br />
+<code>C:\tniasm045</code><br />
+Vous devez ainsi avoir les 2 fichiers suivant dans le dossier &lsquo;tniasm045&rsquo; :</p>
 
 <ul>
-<li><strong>Ces adresses vont de 0 à 65535.</strong><br /></li>
-<li><strong>Chaque adresse peut contenir un nombre entre 0 et 255.</strong></li>
+<li>tniasm.exe<br /></li>
+<li>tniasm.txt</li>
 </ul>
 
-<hr />
-
-<h3 id="rom">ROM</h3>
-
-<p>Appelée mémoire morte. On peut simplement lire cette mémoire.<br />
-On ne peut pas la modifier (données constructeur).<br />
-Elle contient de petits programmes (routines) bien pratiques que l&rsquo;on utilisera en assembleur pour lancer des actions ou faire des calculs.</p>
+<p>Le fichier <em>tniasm.txt</em> est la documentation de l&rsquo;outil, mais en anglais.
+Vu que je me suis &lsquo;cogné&rsquo; la traduction en français, autant qu&rsquo;elle serve : doc française de tniasm à télécharger en bas de cette page.</p>
 
 <hr />
 
-<h3 id="ram">RAM</h3>
+<h4 id="context-touche-raccourci">CONTEXT-TOUCHE RACCOURCI</h4>
 
-<p>Appelée mémoire vive. Elle est modifiable et c&rsquo;est celle que nous utiliserons pour programmer. Par contre elle s&rsquo;efface dès que l&rsquo;on éteint le MSX.
-C&rsquo;est pour cela que l&rsquo;on sauvegarde nos programmes.</p>
+<p>Afin de rendre CONTEXT plus facile d&rsquo;utilisation, on peut paramétrer des touches de raccourci pour compiler le code automatiquement, et faire apparaître les lignes d&rsquo;erreur.<br />
+Dans le menu de CONTEXT choisissez &lsquo;<code>Options / Environment Options / Execute Keys</code> vous devez avoir cet écran :<br />
+<img src="/tuto asm 01/04/images/exec.png?classes=shadow" alt="Execution" /><br />
+Cliquez sur le bouton [Add] et remplissez avec <strong>asm,z80</strong>
+<img src="/tuto asm 01/04/images/e.png?classes=shadow" alt="Execution" /><br />
+Ainsi, on va définir une action pour tous les fichiers qui ont une extension de type .asm ou .z80.<br />
+Cliquez sur [OK].
+Vous devriez obtenir cela dans la petite fenêtre de gauche :<br />
+<img src="/tuto asm 01/04/images/f.png?classes=shadow" alt="Execution" /><br />
+Cliquez sur la touche de fonction <strong>F9</strong> dans cette petite fenêtre et ensuite remplissez les champs à droite comme suit :</p>
 
-<hr />
+<table>
+<thead>
+<tr>
+<th>champs</th>
+<th>Valeur à taper</th>
+</tr>
+</thead>
 
-<h3 id="registres-internes">Registres internes</h3>
+<tbody>
+<tr>
+<td>Execute</td>
+<td>c:\tniasm045\tniasm.exe</td>
+</tr>
 
-<p>Ce sont des sortes de mémoires. Ils n&rsquo;ont pas d&rsquo;adresse mais des lettres. En assembleur, c&rsquo;est avec eux (une vingtaine environ) que l&rsquo;on va jouer.
-On va rappeler des adresses, lire ou écrire dedans et faire des calculs. Et tout ça, c&rsquo;est avec l&rsquo;aide de ces registres que l&rsquo;on va le faire.</p>
+<tr>
+<td>Start in</td>
+<td>%p</td>
+</tr>
 
-<p><img src="/tuto asm 01/02/images/regz80.jpg?classes=shadow" alt="Registres internes du Z80" /></p>
+<tr>
+<td>Parameters</td>
+<td>%n</td>
+</tr>
 
-<p>Il existe une page très simple et explicative du fonctionnement de ces registres du Z80 : <a href="http://www.google.com/url?q=http%3A%2F%2Ffr.wikibooks.org%2Fwiki%2FProgrammation_Assembleur_Z80&amp;sa=D&amp;sntz=1&amp;usg=AFQjCNHwD_VHYzPYk2D7E879Q2yaX32nQA">Wiki Z80</a></p>
+<tr>
+<td>Window</td>
+<td>Normal</td>
+</tr>
 
-<p>Il est important que l&rsquo;on parle du VDP pour finir car c&rsquo;est avec lui que l&rsquo;on va discuter fréquemment pour afficher nos sprites et les faire bouger.
-Je passe volontairement sur les autres processeurs (PSG et PPI), on y reviendra au besoin.</p>
+<tr>
+<td>Hint</td>
+<td>Compile</td>
+</tr>
 
-<hr />
+<tr>
+<td>Save</td>
+<td>Current file before execution</td>
+</tr>
 
-<h3 id="vdp">VDP</h3>
+<tr>
+<td>Use short Dos names</td>
+<td>Not ticked</td>
+</tr>
 
-<p>Ce processeur permet d&rsquo;afficher des images, des caractères ou des sprites à l&rsquo;écran.
-Il contient 16ko de mémoire, appelée <strong>VRAM</strong> (dans laquelle on peut lire et écrire) et <strong>9 registres internes</strong> (R0 à R7+ 1 registre d&rsquo;état) qui ne sont pas les mêmes que ceux du Z80.
-La VRAM est divisée en 5 tables : 3 pour gérer l&rsquo;affichage des caractères et 2 pour les sprites. Ces tables ne sont rien d&rsquo;autre qu&rsquo;un groupe d&rsquo;adresses pouvant stocker des nombres.
+<tr>
+<td>Capture console output</td>
+<td>Ticked</td>
+</tr>
 
-<div class="notices info" ><p>Les 3 tables des caractères:<br />
-- <strong>TGP</strong> (Table Génératrice des Patrons): C&rsquo;est là que l&rsquo;on stocke les formes des caractères. Quand on tape la lettre A, le processeur Z80 demande au VDP de choisir la forme correspondant à la lettre A dans cette table.<br />
-- <strong>TNP</strong> (Table des Noms des Patrons): C&rsquo;est là que l&rsquo;on va indiquer où afficher le caractère à l&rsquo;écran.<br />
-- <strong>TC</strong> (Table des Couleurs): C&rsquo;est dans cette table que l&rsquo;on va choisir la couleur du caractère et du fond de ce caractère.</p>
+<tr>
+<td>Compiler output parser rule</td>
+<td>*line%l(%n)*</td>
+</tr>
+
+<tr>
+<td>Scroll console to the last line</td>
+<td>Ticked</td>
+</tr>
+</tbody>
+</table>
+
+<p>Vous obtenez ceci :<br />
+<img src="/tuto asm 01/04/images/g.png?classes=shadow" alt="Execution" /><br />
+Quand on voudra compiler du code assembleur, on aura plus qu&rsquo;à appuyer sur <strong>F9</strong> et cela se fera automatiquement, ou s&rsquo;il y a une erreur de compilation on le verra dans la fenêtre basse de CONTEXT.</p>
+
+<p>Pour tester cet environnement on utilisera des fichiers source, c&rsquo;est l&rsquo;objet du prochain article.</p>
+
+
+<div class="notices note" ><p>Je tiens à remercier celui qui a fait cette procédure d&rsquo;installation, que je n&rsquo;ai fait que traduire et adapter à notre exemple, visitez son site :  <a href="http://www.electricadventures.net/">http://www.electricadventures.net/</a></p>
 </div>
-</p>
-
-<p>Le principe de fonctionnement de ces 3 tables est le suivant : on demande au processeur VDP d&rsquo;afficher un (ou des) caractère(s) en définissant ce que l&rsquo;on veut afficher, où on veut l&rsquo;afficher et dans quelle couleur. Et comme on connait maintenant les tables de caractères, on pourra modifier la forme de ces derniers à volonté (par exemple pour dessiner un décor de jeu).</p>
 
 
-<div class="notices info" ><p>Les 2 tables des sprites:<br />
--<strong>TGS</strong> (Table Génératrice des Sprites): Stocke les dessins des sprites que l&rsquo;on va définir.<br />
--<strong>TAS</strong> (Table des Attributs des Sprites): stocke la position, le numéro et la couleur de chaque sprite.</p>
-</div>
+
+<section class="attachments blue">
+	<label>
+		<i class="fas fa-paperclip" aria-hidden="true"></i>
+		Fichiers associés
+	</label>
+	
+		
+	
+	<div class="attachments-files">
+	
+		
+		
+			
+				<li>
+					<a href="/tuto%20asm%2001/04/04-mise%20en%20place.files/tniasm_fr.txt" >
+						tniasm_fr.txt
+					</a>
+					(29 ko)
+				</li>
+			
+		
+	
+	<div>
+	
+</section>
 
 
-<p><img src="/tuto asm 01/02/images/vdp.png?classes=shadow" alt="Registres internes du Z80" /></p>
-
-<p>Chacune de ces 5 tables débute par une adresse que l&rsquo;on doit connaitre pour pouvoir y intégrer une liste d&rsquo;informations, qui seront stockées à partir de là, vers les adresses suivantes en fonction du nombre d&rsquo;informations (données) à stocker.</p>
-
-<p>Pour définir automatiquement ces adresses de début en suivant les données constructeur, le VDP utilise 4 modes de fonctionnement :</p>
-
-<ul>
-<li><strong>SCREEN 0 : Le mode texte</strong><br /></li>
-<li><strong>SCREEN 1 : Le mode graphique 1</strong><br /></li>
-<li><strong>SCREEN 2 : Le mode graphique 2</strong><br /></li>
-<li><strong>SCREEN 3 : Le mode multicolore</strong></li>
-</ul>
-
-<p>Le programme assembleur que je veux expliquer utilise le SCREEN 1 donc je ne parlerai que de celui-là pour l&rsquo;instant.</p>
-
-<p>Le SCREEN 1 sur MSX1 c&rsquo;est 32 colonnes sur 24 lignes de texte et la possibilité d&rsquo;utiliser les sprites.</p>
-
-<p><img src="/tuto asm 01/02/images/adrscreen1.png?classes=shadow" alt="Registres internes du Z80" /></p>
 
 
 <footer class=" footline" >
@@ -449,6 +525,21 @@ La VRAM est divisée en 5 tables : 3 pour gérer l&rsquo;affichage des caractèr
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -466,24 +557,6 @@ La VRAM est divisée en 5 tables : 3 pour gérer l&rsquo;affichage des caractèr
             
                 
                     
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -508,10 +581,10 @@ La VRAM est divisée en 5 tables : 3 pour gérer l&rsquo;affichage des caractèr
 	 
 	 
 		
-			<a class="nav nav-prev" href="/tuto-asm-01/01/01introduction/" title="01-Introduction"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/tuto-asm-01/01/01introduction/" title="01-Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -1,6 +1,6 @@
 ---
 title: "03-Afficher un caractère"
-weight: 15
+weight: 3
 ---
 
 # (La théorie)

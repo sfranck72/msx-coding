@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>01-introduction</title>
+      <title>01-Introduction</title>
       <link>/tuto-asm-01/01/01introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -22,7 +22,7 @@ Je me suis procuré le livre suivant : MSX Programmes en langage machine de Stev
     </item>
     
     <item>
-      <title>02-structure</title>
+      <title>02-Structure</title>
       <link>/tuto-asm-01/02/02structure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -31,8 +31,7 @@ Je me suis procuré le livre suivant : MSX Programmes en langage machine de Stev
 Le MSX c&amp;rsquo;est un processeur Z80 (le coeur). Il discute avec 3 organes principaux :
  Le VDP : Un processeur qui gère l&amp;rsquo;affichage écran (16ko de mémoire).
  Le PSG : Un processeur qui gère le son.
- Le PPI : Un processeur qui gère le clavier notamment.
-  Revenons au Z80, il dispose de 3 sortes de mémoires :</description>
+ Le PPI : Un processeur qui gère le clavier notamment.  Revenons au Z80, il dispose de 3 sortes de mémoires :</description>
     </item>
     
     <item>
@@ -47,6 +46,19 @@ Le MSX c&amp;rsquo;est un processeur Z80 (le coeur). Il discute avec 3 organes p
  TC (la couleur du caractère et du fond de celui-ci)
   TNP  En mode SCREEN 1, on a vu que la TNP débute à l&amp;rsquo;adresse 6144.
  On sait aussi qu&amp;rsquo;en SCREEN 1 on a 32 colonnes pour 24 lignes (pour le texte).</description>
+    </item>
+    
+    <item>
+      <title>04-Mise en place</title>
+      <link>/tuto-asm-01/04/04-mise-en-place/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/04/04-mise-en-place/</guid>
+      <description>des outils de développement On va avoir besoin d&amp;rsquo;installer 3 programmes :
+ Un émulateur (simule un MSX)
+ Un éditeur de texte (pour taper du code texte assembleur)
+ un assembleur (compile le code texte en code machine utilisable par un MSX)  Pour cela j&amp;rsquo;ai suivi les explications du site d&amp;rsquo;un développeur anglais dont je vous donne l&amp;rsquo;adresse de sa chaine Youtube :
+Lets Make a Retro Game</description>
     </item>
     
   </channel>
