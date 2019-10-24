@@ -120,4 +120,4 @@ Ce qui nous intéresse se trouve entre ces 2 parties :
 
 C'est ici que nous allons taper notre 1er code....dans le prochain article.
 
-{{%attachments style="blue" title="Fichiers associés" pattern=".*(txt)"/%}}  
+{{%attachments style="blue" title="Fichiers associés" pattern=".*(zip)"/%}}  
