@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.59.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>05-Découverte du code :: MSX-coding</title>
+
+    
+    <link href="/css/nucleus.css?1571937355" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571937355" rel="stylesheet">
+    <link href="/css/hybrid.css?1571937355" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571937355" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571937355" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571937355" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571937355" rel="stylesheet">
+    <link href="/css/theme.css?1571937355" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571937355" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1571937355" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1571937355"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/tuto-asm-01/05/05-decouverte/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <img id="sfranck-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" src="/images/logo.png">
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1571937355"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571937355"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1571937355"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/tuto-asm-01/">
+          Tuto ASM 01
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/01/01introduction/" title="01-Introduction" class="dd-item ">
+        <a href="/tuto-asm-01/01/01introduction/">
+        01-Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure" class="dd-item ">
+        <a href="/tuto-asm-01/02/02structure/">
+        02-Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item ">
+        <a href="/tuto-asm-01/03/03affchr/">
+        03-Afficher un caractère
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item ">
+        <a href="/tuto-asm-01/04/04-mise-en-place/">
+        04-Mise en place
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/05/05-decouverte/" title="05-Découverte du code" class="dd-item active">
+        <a href="/tuto-asm-01/05/05-decouverte/">
+        05-Découverte du code
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/06/06-afficher_chr/" title="06-La pratique" class="dd-item ">
+        <a href="/tuto-asm-01/06/06-afficher_chr/">
+        06-La pratique
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 05-Découverte du code
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#fichiers-sources-et-découverte-du-code-assembleur-msx">Fichiers sources et découverte du code assembleur MSX</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              05-Découverte du code
+            </h1>
+          
+
+        
+
+
+
+
+
+<h2 id="fichiers-sources-et-découverte-du-code-assembleur-msx">Fichiers sources et découverte du code assembleur MSX</h2>
+
+<p>Pour faire fonctionner l&rsquo;environnement que l&rsquo;on a mis en place, on a besoin d&rsquo;un document où taper notre code.<br />
+Il se présente sous la forme d&rsquo;un petit fichier texte comme on peu en utiliser avec le <em>blocnote</em> de Windows. Sauf que le notre aura une extension de fichier qui se termine par <strong>.asm</strong> au lieu du traditionnel .txt</p>
+
+<p>C&rsquo;est lui que l&rsquo;on va ouvrir avec l&rsquo;éditeur de texte CONTEXT, c&rsquo;est lui qui va recevoir le code que l&rsquo;on va taper et c&rsquo;est encore lui que l&rsquo;on va compiler via la touche de fonction <strong>F9</strong>. Cette compilation nous donnera un fichier exploitable par l&rsquo;émulateur MSX.</p>
+
+<p>Ce fichier ne peut pas être compilé tout seul, il a besoin de se trouver dans le même dossier ou vont figurer 2 fichiers sources (appelées <strong>librairies</strong>) et qui aideront à la compilation.<br />
+En effet notre fichier principal comporte un entête et un pied de page que l&rsquo;on ne touchera pas mais qui à l&rsquo;aide des librairies feront qu&rsquo;à la compilation on se retrouvera avec un fichier de sortie qui aura l&rsquo;extension <strong>.ROM</strong>.<br />
+Et miracle, cela simulera les fameuses cartouches ROM de notre enfance qui démarraient automatiquement quand on allumait notre bon vieux MSX.</p>
+
+<p>Ce fichier ne peut pas être compilé tout seul, il a besoin de se trouver dans le même dossier ou vont figurer 2 fichiers sources (appelées librairies) et qui aideront à la compilation.
+En effet notre fichier principal comporte un entête et un pied de page que l&rsquo;on ne touchera pas mais qui à l&rsquo;aide des librairies feront qu&rsquo;à la compilation on se retrouvera avec un fichier de sortie qui aura l&rsquo;extension.ROM.
+Et miracle, cela simulera les fameuses cartouches ROM de notre enfance qui démarraient automatiquement quand on allumait notre bon vieux MSX.</p>
+
+<p>Bon on résume avec un schéma :<br />
+<img src="/tuto asm 01/05/images/1.png?classes=shadow" alt="Execution" /></p>
+
+<p>Bon, j&rsquo;espère que c&rsquo;est plus clair maintenant.<br />
+Avant que je ne vous donne le liens de téléchargement des fichiers sources, je vais vous les présenter:</p>
+
+<p>Le fichier principal, celui où on tapera notre code (pour l&rsquo;instant, il n&rsquo;y a que l&rsquo;entête et le pied de page à l&rsquo;intérieur) :</p>
+
+<pre><code>example.asm
+</code></pre>
+
+<p>Les 2 librairies, qui doivent se trouver toujours dans le même dossier que le fichier principal sinon l&rsquo;assembleur ne saura pas où les trouver :</p>
+
+<pre><code>MSXRom-Include.asm
+
+MSXRom-Lib.asm 
+</code></pre>
+
+<p>Pour le lien du dossier : fichiers source à télécharger en bas de cette page.
+
+<div class="notices note" ><p>Je me dois encore remercier celui qui a fourni ces sources, c&rsquo;est son travail :  <a href="http://www.electricadventures.net/">http://www.electricadventures.net/</a></p>
+</div>
+</p>
+
+<p>Vous ouvrez <code>exemple.asm</code> avec <strong>CONTEXT</strong> et on va en profiter pour utiliser le colorateur syntaxique qui reconnait le langage assembleur et que l&rsquo;on a téléchargé précédemment.<br />
+Donc, dans le menu de CONTEXT, choisissez <code>Tools / Set Highlighter</code> et dansla liste des codes connus, vous devez trouver <code>WLA-Z80 Assembler</code>, sélectionnez-le.</p>
+
+<p>Si vous voulez faire apparaître les numéros de ligne sous CONTEXT (utile pour le debuggage), dans le menu de CONTEXT, choisissez <code>Options / Environment Options / onglet Editor</code> et vous cochez <code>Line numbers</code>.<br />
+Vous devez en être là :</p>
+
+<p><img src="/tuto asm 01/05/images/2.png?classes=shadow" alt="Execution" /></p>
+
+<p>2 fenêtres:</p>
+
+<ul>
+<li>La partie haute : zone où on tape le code.</li>
+<li>La partie basse : zone de suivi de la compilation quand on fait <strong>F9</strong>.</li>
+</ul>
+
+<p>Regardons ce code depuis le début :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#75715e">; MSX ROM Cartridge Header and Function library</span>
+<span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#a6e22e">FNAME</span> <span style="color:#e6db74">"exemple.ROM"</span>
+<span style="color:#66d9ef">cpu</span> <span style="color:#f8f8f2">z80</span>
+
+<span style="color:#66d9ef">ORG</span> <span style="color:#ae81ff">4000h</span>
+
+<span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">"MSXRom-Include.asm"</span>
+
+<span style="color:#66d9ef">db</span> <span style="color:#e6db74">"AB"</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#f8f8f2">INIT</span>            <span style="color:#75715e">; la ROM lance le sous-programme INIT au démarrage</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">DS</span> <span style="color:#ae81ff">6</span>
+</pre>
+
+<p>C&rsquo;est ce que j&rsquo;appelle l&rsquo;entête.</p>
+
+<p><strong>FNAME</strong>: c&rsquo;est le nom du fichier qui sortira à la compilation, vous pouvez donc mettre le nom que vous voulez entre les &ldquo; &rdquo; du moment que vous conservez l&rsquo;extension.ROM.</p>
+
+<p><strong>cpu Z80</strong>: La compilation utilisera la librairie Z80 (tniASM en gère plusieurs).</p>
+
+<p><strong>ORG 4000h</strong>: Notre programme s&rsquo;implantera à cette adresse au démarrage de la ROM dans l&rsquo;émulateur. Pour info, quand un nombre est suivi de &lsquo;h&rsquo; c&rsquo;est que l&rsquo;on indique que c&rsquo;est un Hexadécimal sinon, c&rsquo;est un décimal.</p>
+
+<p><strong>INCLUDE</strong>: C&rsquo;est pour cela que je vous disais que les librairies doivent être dans le même dossier, car à la compilation, tniASM va chercher tous les fichiers cité par in INCLUDE et qui va lui permettre d&rsquo;interpréter le code spécifique à l&rsquo;assembleur MSX.</p>
+
+<p><strong>DW INIT</strong>: Cette suite de DW permet de créer une structure de ROM à la compilation d&rsquo;après ce que j&rsquo;en ai compris. Ce qui est important, c&rsquo;est le mot INIT, cela aurait pu être n&rsquo;importe quoi FRAISE, MARTEAU,etc&hellip;<br />
+Cela intime l&rsquo;ordre au démarrage de la ROM d&rsquo;aller déclencher le code qui commence par ce &lsquo;label&rsquo;. Ces &lsquo;labels&rsquo; sont des bout de programmes appelés routines qui que l&rsquo;on pourra appeler au besoin. En effet, en assembleur, on ne dispose pas des lignes comme en BASIC alors on appelle des &lsquo;labels&rsquo; pour sauter à une partie du programme.</p>
+
+<p>Le pied de page est présenté ici mais je n&rsquo;en parlerai pas, il ne vous apprendra rien de plus : En fait, je ne le maîtrise pas, alors je le laisse ;-)<br />
+Pour info, lorsque on tape un point virgule <code>;</code> ce qui suis sur la ligne est du commentaire et ne sera pas interprété comme du code par l&rsquo;assembleur.</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;**************************************************************************************************</span>
+<span style="color:#75715e">; Standard Libraries</span>
+<span style="color:#75715e">;**************************************************************************************************</span>
+
+<span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">"MSXRom-Lib.asm"</span> <span style="color:#75715e">; intègre la librairie MSX</span>
+
+<span style="color:#f8f8f2">END:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#66d9ef">$</span>
+
+
+<span style="color:#75715e">;**************************************************************************************************</span>
+<span style="color:#75715e">; RAM Definitions</span>
+<span style="color:#75715e">;**************************************************************************************************</span>
+
+<span style="color:#75715e">;-------------------</span>
+<span style="color:#75715e">; Définit que le programme démarrera au début de la RAM disponible</span>
+<span style="color:#75715e">;-------------------</span>
+<span style="color:#66d9ef">ORG</span> <span style="color:#f8f8f2">RAMSTART</span>
+</pre>
+
+<p>Ce qui nous intéresse se trouve entre ces 2 parties :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Démarrage du programme à INIT</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#75715e">; Tapez votre code à partir d'ici</span>
+</pre>
+
+<p>C&rsquo;est ici que nous allons taper notre 1er code&hellip;.dans le prochain article.</p>
+
+
+<section class="attachments blue">
+	<label>
+		<i class="fas fa-paperclip" aria-hidden="true"></i>
+		Fichiers associés
+	</label>
+	
+		
+	
+	<div class="attachments-files">
+	
+		
+		
+			
+		
+	
+	<div>
+	
+</section>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/tuto-asm-01/06/06-afficher_chr/" title="06-La pratique" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1571937355"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571937355"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571937355"></script>
+    <script src="/js/jquery.sticky.js?1571937355"></script>
+    <script src="/js/featherlight.min.js?1571937355"></script>
+    <script src="/js/highlight.pack.js?1571937355"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571937355"></script>
+    <script src="/js/learn.js?1571937355"></script>
+    <script src="/js/hugo-learn.js?1571937355"></script>
+
+    <link href="/mermaid/mermaid.css?1571937355" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571937355"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

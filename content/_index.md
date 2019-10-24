@@ -8,4 +8,4 @@ draft: false
 
 Code et Documentation de l'ordinateur MSX.
 
-![Code](/resources/_gen/images/gopher.jpg?classes=shadow)
+![Code](/resources/_gen/images/gopher.jpg?classes=border,shadow)

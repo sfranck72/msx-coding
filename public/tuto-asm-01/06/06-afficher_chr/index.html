@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.59.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>06-La pratique :: MSX-coding</title>
+
+    
+    <link href="/css/nucleus.css?1571937355" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571937355" rel="stylesheet">
+    <link href="/css/hybrid.css?1571937355" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571937355" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571937355" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571937355" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571937355" rel="stylesheet">
+    <link href="/css/theme.css?1571937355" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571937355" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1571937355" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1571937355"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/tuto-asm-01/06/06-afficher_chr/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <img id="sfranck-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" src="/images/logo.png">
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1571937355"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571937355"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1571937355"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/tuto-asm-01/">
+          Tuto ASM 01
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/01/01introduction/" title="01-Introduction" class="dd-item ">
+        <a href="/tuto-asm-01/01/01introduction/">
+        01-Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure" class="dd-item ">
+        <a href="/tuto-asm-01/02/02structure/">
+        02-Structure
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item ">
+        <a href="/tuto-asm-01/03/03affchr/">
+        03-Afficher un caractère
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item ">
+        <a href="/tuto-asm-01/04/04-mise-en-place/">
+        04-Mise en place
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/05/05-decouverte/" title="05-Découverte du code" class="dd-item ">
+        <a href="/tuto-asm-01/05/05-decouverte/">
+        05-Découverte du code
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/06/06-afficher_chr/" title="06-La pratique" class="dd-item active">
+        <a href="/tuto-asm-01/06/06-afficher_chr/">
+        06-La pratique
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 06-La pratique
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#la-pratique-afficher-un-caractère">La pratique : Afficher un caractère</a>
+<ul>
+<li>
+<ul>
+<li><a href="#screen-1">SCREEN 1</a></li>
+<li><a href="#affichage-du-a">AFFICHAGE DU &lsquo;A&rsquo;</a></li>
+<li><a href="#changer-la-couleur-du-caractere">CHANGER LA COULEUR DU CARACTERE</a></li>
+<li><a href="#boucle-infinie">BOUCLE INFINIE</a></li>
+<li><a href="#compilation">COMPILATION</a></li>
+<li><a href="#fichier-rom-genere">FICHIER .ROM GENERE</a></li>
+<li><a href="#ejecter-la-rom-et-quitter">EJECTER LA ROM ET QUITTER</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              06-La pratique
+            </h1>
+          
+
+        
+
+
+
+
+
+<h2 id="la-pratique-afficher-un-caractère">La pratique : Afficher un caractère</h2>
+
+<p>On va maintenant taper notre 1er code qui permettra :</p>
+
+<blockquote>
+<ul>
+<li><strong>Activer le mode SCREEN 1.</strong></li>
+<li><strong>Afficher le caractère A à la position 5 de l&rsquo;écran.</strong></li>
+<li><strong>Changer la couleur du caractère et du fond du caractère.</strong></li>
+<li><strong>Faire une boucle infinie pour que le résultat de cet affichage reste à l&rsquo;écran.</strong></li>
+</ul>
+</blockquote>
+
+<hr />
+
+<p>Voici ce que cela donne pour l&rsquo;ensemble du code, mais on va le reprendre bout par bout :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Démarrage du programme à INIT</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#a6e22e">Ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; 1 pour 'SCREEN 1'</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">[</span><span style="color:#ae81ff">64687</span><span style="color:#f8f8f2">],a</span>      <span style="color:#75715e">; routine BIOS [SCRMOD] : mode courant de l'écran</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">95</span>             <span style="color:#75715e">; routine BIOS [CHMOD]  : change le mode l'écran</span>
+
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">65</span>           <span style="color:#75715e">; on charge l'accumulateur avec 65 (ASCII de 'A')</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6144</span><span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>      <span style="color:#75715e">; on charge en HL l'adresse de la TNP + 5 (position 5)</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">77</span>             <span style="color:#75715e">; routine BIOS [WRTVRM] : écrit dans la VRAM (write to VRAM)</span>
+
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">223</span>          <span style="color:#75715e">; on charge le code couleur (magenta sur blanc=223)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">8200</span>        <span style="color:#75715e">; on charge l'adresse de la TC pour le caractère 'A'</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">77</span>             <span style="color:#75715e">; routine BIOS [WRTVRM] : écrit dans la VRAM (write to VRAM)</span>
+
+<span style="color:#f8f8f2">BOUCLE:</span>             <span style="color:#75715e">; A la fin d'INIT, le programme n'est pas stoppé alors il continue</span>
+<span style="color:#a6e22e">JP</span>     <span style="color:#f8f8f2">BOUCLE</span>       <span style="color:#75715e">; dans le prochain label, ici BOUCLE (comparable à 100 GOTO 100)</span>
+</pre>
+
+<p>C&rsquo;est parti :<br />
+En mode assembleur, en général, <strong>on charge un accumulateur A avec une valeur entre 0 et 255</strong>, et une adresse en HL (ce sont les registres internes avec lesquels la RAM fait les calculs) puis on lance l&rsquo;odre d&rsquo;exécution par un CALL.</p>
+
+<h4 id="screen-1">SCREEN 1</h4>
+
+<p>C&rsquo;est l&rsquo;exemple type, l&rsquo;adresse 64687 est une routine BIOS qui abrite le mode courant de l&rsquo;écran (SCREEN 1, 2 ou 3).</p>
+
+<ol>
+<li>Donc la 1ere ligne charge (c&rsquo;est l&rsquo;instruction &lsquo;LD&rsquo;) A avec 1 donc A=1.</li>
+<li>On assigne cette valeur à l&rsquo;adresse 64687 (2eme ligne).</li>
+<li>Et enfin on donne l&rsquo;ordre via une routine spécifique du BIOS en ROM d&rsquo;exécuter cela. Après le CALL le SCREEN 1  est effectif.</li>
+</ol>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Démarrage du programme à INIT</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#a6e22e">Ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; 1 pour 'SCREEN 1'</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">[</span><span style="color:#ae81ff">64687</span><span style="color:#f8f8f2">],a</span>      <span style="color:#75715e">; routine BIOS [SCRMOD] : mode courant de l'écran</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">95</span>             <span style="color:#75715e">; routine BIOS [CHMOD]  : change le mode l'écran</span>
+</pre>
+
+<p>Au départ ces adresses et routines appelées semblent obscures mais celles que l&rsquo;on utilise régulièrement sont en nombre réduit et deviendront familières rapidement.
+J&rsquo;utilise  souvent le décimal, mais <code>CALL 95</code> peut s&rsquo;écrire aussi  <code>CALL $5F</code> en hexadécimal, tniasm reconnait la plupart des expressions pour l&rsquo;hexadécimal (voir sa doc).<br />
+Un site pour voir la liste des routines BIOS : <a href="http://map.grauw.nl/resources/msxbios.php">http://map.grauw.nl/resources/msxbios.php</a></p>
+
+<blockquote>
+<p><strong>CHGMOD</strong><br />
+Address  : #005F<br />
+Function : Switches to given screenmode<br />
+Input    : A  - screen mode<br />
+Registers: All</p>
+</blockquote>
+
+<hr />
+
+<h4 id="affichage-du-a">AFFICHAGE DU &lsquo;A&rsquo;</h4>
+
+<p>Là, ça doit vous parler, on connait la valeur du caractère &lsquo;A&rsquo; en ASCII = 65.<br />
+On a vu dans la théorie que le début de la table TNP (qui gère les positions d&rsquo;affichage) est à l&rsquo;adresse 6144 en SCREEN 1. On a choisit arbitrairement  la position 5 (vous pouvez vous amuser avec une autre valeur).<br />
+Petite nouveauté, le <strong>CALL 77</strong> (CALL $4D) qui exécute l&rsquo;ordre du calcul que l&rsquo;on vient de faire attend  <strong>A</strong> et <strong>HL</strong> chargés en entrants :</p>
+
+<blockquote>
+<p><strong>WRTVRM</strong><br />
+Address  : #004D<br />
+Function : Writes data in VRAM<br />
+Input    : HL - address write<br />
+           A  - value write</p>
+</blockquote>
+
+<p>Voici le bout de code correspondant :<br />
+<pre style="line-height:125%;margin:0"><span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">65</span>           <span style="color:#75715e">; on charge l&rsquo;accumulateur avec 65 (ASCII de &lsquo;A&rsquo;)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6144</span><span style="color:#f92672">+</span><span style="color:#ae81ff">5</span>      <span style="color:#75715e">; on charge en HL l&rsquo;adresse de la TNP + 5 (position 5)</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">77</span>             <span style="color:#75715e">; routine BIOS [WRTVRM] : écrit dans la VRAM (write to VRAM)</span>
+</pre></p>
+
+<h4 id="changer-la-couleur-du-caractere">CHANGER LA COULEUR DU CARACTERE</h4>
+
+<p>Même punition. Tout est dans le commentaire du code :
+<pre style="line-height:125%;margin:0"><span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">223</span>          <span style="color:#75715e">; on charge le code couleur (magenta sur blanc=223)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">8200</span>        <span style="color:#75715e">; on charge l&rsquo;adresse de la TC pour le caractère &lsquo;A&rsquo;</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">77</span>             <span style="color:#75715e">; routine BIOS [WRTVRM] : écrit dans la VRAM (write to VRAM)</span>
+</pre></p>
+
+<h4 id="boucle-infinie">BOUCLE INFINIE</h4>
+
+<p>On se rajoute cette boucle pour ne pas revenir au BASIC et perdre l&rsquo;affichage.<br />
+<pre style="line-height:125%;margin:0"><span style="color:#f8f8f2">BOUCLE:</span>             <span style="color:#75715e">; A la fin d&rsquo;INIT, le programme n&rsquo;est pas stoppé alors il continue</span>
+<span style="color:#a6e22e">JP</span>     <span style="color:#f8f8f2">BOUCLE</span>       <span style="color:#75715e">; dans le prochain label, ici BOUCLE (comparable à 100 GOTO 100)</span>
+</pre></p>
+
+<p>Il n&rsquo;y a plus qu&rsquo;a compiler et demander à l&rsquo;émulateur d&rsquo;utiliser le fichier généré qui doit être &ldquo;testA.ROM&rdquo;&hellip;.vous vous souvenez, le FNAME dans l&rsquo;entête, au début du code, ben je l&rsquo;ai modifié ainsi pour changer le nom de fichier généré.</p>
+
+<h4 id="compilation">COMPILATION</h4>
+
+<p>On clique sur la touche de fonction [F9], cela sauvegarde notre fichier texte et lance la compilation.<br />
+<em>Vous pouvez aussi procéder autrement: Sauvegardez votre fichier et dans l&rsquo;explorateur Windows, faites glissez votre &ldquo;testA.asm&rdquo; sur &ldquo;tniasm.exe&rdquo; avec la souris et cela va déclencher la compilation et créer le fichier en sortie dans le même dossier. Cela sous-entend que tniasm est dans le même dossier que votre code et ses librairies. L&rsquo;inconvénient c&rsquo;est que vous ne savez pas s&rsquo;il y a des erreurs de compilation.</em></p>
+
+<p>On voit que la fenêtre basse de CONTEXT a changée :
+<img src="/tuto asm 01/06/images/1.png?classes=shadow" alt="Execution" /></p>
+
+<p>On voit les 2 passes pour générer le fichier .ROM et pas d&rsquo;erreur.<br />
+Si vous avez une erreur, elle se présentera de cette manière :</p>
+
+<p><img src="/tuto asm 01/06/images/2.png?classes=shadow" alt="Execution" /></p>
+
+<p>CONTEXT indique la ligne d&rsquo;erreur, ici pour l&rsquo;exemple c&rsquo;est la ligne 22.<br />
+Quand on regarde notre code, on voit que l&rsquo;on a ajouté un <strong>t</strong> par erreur&hellip;.c&rsquo;est pas toujours aussi évident, je vous l&rsquo;accorde.</p>
+
+<h4 id="fichier-rom-genere">FICHIER .ROM GENERE</h4>
+
+<p>Si tout c&rsquo;est bien passé, notre répertoire où se trouve notre code doit ressembler à ceci :
+<img src="/tuto asm 01/06/images/3.png?classes=shadow" alt="Execution" /></p>
+
+<ul>
+<li>Les 2 librairies<br /></li>
+<li>Notre code principal : &ldquo;testA.asm&rdquo;
+Le fichier &ldquo;testA.ROM&rdquo; généré, c&rsquo;est celui-ci qui nous intéresse.<br /></li>
+<li>3 fichiers de compilations (en surligné dans l&rsquo;image ci-dessus) que l&rsquo;on n&rsquo;utilisera pas.<br /></li>
+</ul>
+
+<p>On va prendre le <strong>&ldquo;testA.rom&rdquo;</strong> et le faire glisser avec la souris dans l&rsquo;émulateur blueMSX que vous aurez ouvert au préalable.</p>
+
+<p>BlueMSX va rebooter le MSX et au bout de quelques secondes on doit admirer&hellip;..un caractère&hellip;..mais en couleur s&rsquo;il vous plait !!!</p>
+
+<p><img src="/tuto asm 01/06/images/4.png?classes=shadow" alt="Ecran 1" /></p>
+
+<p>On voit dans le bandeau en bas que dans le champs &lsquo;SCREEN&rsquo; nous sommes bien passé en &lsquo;SCR 1&rsquo;</p>
+
+<h4 id="ejecter-la-rom-et-quitter">EJECTER LA ROM ET QUITTER</h4>
+
+<p>Vous vous rappelez que nous avons mis une boucle infinie à la fin de notre code, de ce fait nous ne pouvons avoir d&rsquo;action sur l&rsquo;émulateur et si vous le rebootez en appuyant sur le gros bouton rond en haut à gauche (à côté du point rouge), blueMSX va relancer la machine mais aussi notre fichier .ROM.</p>
+
+<p>En effet, nous venons de créer une cartouche 16ko et elles sont faites pour démarrer automatiquement.<br />
+Donc si vous voulez <strong>éjecter</strong> la cartouche, vous appuyez sur le bouton rond à côté de <strong>slot</strong> et choisissez <strong>Ejecter: testA.ROM</strong> :</p>
+
+<p><img src="/tuto asm 01/06/images/5.png?classes=shadow" alt="Ecran 1" /></p>
+
+<p>blueMSX va rebooter la machine automatiquement mais sans la cartouche et rendre la main à l&rsquo;invite de commande du BASIC.</p>
+
+<p>Le prochain article on apprendra à afficher les sprites, pour cela on partira directement sur l&rsquo;élaboration du shoot-em-up.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/tuto-asm-01/05/05-decouverte/" title="05-Découverte du code"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/tuto-asm-01/01/01introduction/" title="01-Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1571937355"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571937355"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571937355"></script>
+    <script src="/js/jquery.sticky.js?1571937355"></script>
+    <script src="/js/featherlight.min.js?1571937355"></script>
+    <script src="/js/highlight.pack.js?1571937355"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571937355"></script>
+    <script src="/js/learn.js?1571937355"></script>
+    <script src="/js/hugo-learn.js?1571937355"></script>
+
+    <link href="/mermaid/mermaid.css?1571937355" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571937355"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

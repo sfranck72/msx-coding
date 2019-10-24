@@ -61,5 +61,26 @@ Le MSX c&amp;rsquo;est un processeur Z80 (le coeur). Il discute avec 3 organes p
 Lets Make a Retro Game</description>
     </item>
     
+    <item>
+      <title>05-Découverte du code</title>
+      <link>/tuto-asm-01/05/05-decouverte/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/05/05-decouverte/</guid>
+      <description>Fichiers sources et découverte du code assembleur MSX Pour faire fonctionner l&amp;rsquo;environnement que l&amp;rsquo;on a mis en place, on a besoin d&amp;rsquo;un document où taper notre code.
+Il se présente sous la forme d&amp;rsquo;un petit fichier texte comme on peu en utiliser avec le blocnote de Windows. Sauf que le notre aura une extension de fichier qui se termine par .asm au lieu du traditionnel .txt
+C&amp;rsquo;est lui que l&amp;rsquo;on va ouvrir avec l&amp;rsquo;éditeur de texte CONTEXT, c&amp;rsquo;est lui qui va recevoir le code que l&amp;rsquo;on va taper et c&amp;rsquo;est encore lui que l&amp;rsquo;on va compiler via la touche de fonction F9.</description>
+    </item>
+    
+    <item>
+      <title>06-La pratique</title>
+      <link>/tuto-asm-01/06/06-afficher_chr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/06/06-afficher_chr/</guid>
+      <description>La pratique : Afficher un caractère On va maintenant taper notre 1er code qui permettra :
+  Activer le mode SCREEN 1. Afficher le caractère A à la position 5 de l&amp;rsquo;écran. Changer la couleur du caractère et du fond du caractère. Faire une boucle infinie pour que le résultat de cet affichage reste à l&amp;rsquo;écran.   Voici ce que cela donne pour l&amp;rsquo;ensemble du code, mais on va le reprendre bout par bout :</description>
+    </item>
+    
   </channel>
 </rss>
