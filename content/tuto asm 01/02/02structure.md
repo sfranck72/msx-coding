@@ -1,5 +1,5 @@
 ---
-title: "02-Structure"
+title: "02-Structure du MSX"
 weight: 2
 ---
 

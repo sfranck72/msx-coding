@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.59.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>08-Afficher un sprite :: MSX-coding</title>
+
+    
+    <link href="/css/nucleus.css?1571955104" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571955104" rel="stylesheet">
+    <link href="/css/hybrid.css?1571955104" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571955104" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571955104" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571955104" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571955104" rel="stylesheet">
+    <link href="/css/theme.css?1571955104" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571955104" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1571955104" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1571955104"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/tuto-asm-01/08/08-sprite/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <img id="sfranck-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" src="/images/logo.png">
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1571955104"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571955104"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1571955104"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/tuto-asm-01/">
+          Tuto ASM 01
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/01/01introduction/" title="01-Introduction" class="dd-item ">
+        <a href="/tuto-asm-01/01/01introduction/">
+        01-Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure du MSX" class="dd-item ">
+        <a href="/tuto-asm-01/02/02structure/">
+        02-Structure du MSX
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item ">
+        <a href="/tuto-asm-01/03/03affchr/">
+        03-Afficher un caractère
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item ">
+        <a href="/tuto-asm-01/04/04-mise-en-place/">
+        04-Mise en place
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/05/05-decouverte/" title="05-Découverte du code" class="dd-item ">
+        <a href="/tuto-asm-01/05/05-decouverte/">
+        05-Découverte du code
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/06/06-afficher_chr/" title="06-La pratique" class="dd-item ">
+        <a href="/tuto-asm-01/06/06-afficher_chr/">
+        06-La pratique
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/07/07-shoot/" title="07-un shoot-em-up" class="dd-item ">
+        <a href="/tuto-asm-01/07/07-shoot/">
+        07-un shoot-em-up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/08/08-sprite/" title="08-Afficher un sprite" class="dd-item active">
+        <a href="/tuto-asm-01/08/08-sprite/">
+        08-Afficher un sprite
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/09/09-deplacement/" title="09-Déplacement du joueur" class="dd-item ">
+        <a href="/tuto-asm-01/09/09-deplacement/">
+        09-Déplacement du joueur
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 08-Afficher un sprite
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#la-pratique">La pratique</a>
+<ul>
+<li>
+<ul>
+<li><a href="#screen-1">SCREEN 1</a></li>
+<li><a href="#chargement-de-la-tgs">CHARGEMENT DE LA TGS</a></li>
+<li><a href="#chargement-de-la-tas">CHARGEMENT DE LA TAS</a></li>
+<li><a href="#3-indicateurs-de-deplacement">3 INDICATEURS DE DEPLACEMENT</a></li>
+<li><a href="#taille-des-sprites">TAILLE DES SPRITES</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              08-Afficher un sprite
+            </h1>
+          
+
+        
+
+
+
+
+
+<h2 id="la-pratique">La pratique</h2>
+
+<p>On va maintenant taper notre 1er code du shoot-em-up.</p>
+
+<p>On va enlever la partie du code correspondant à l&rsquo;affichage du caractère (qui était notre exemple précédent), et donc repartir du fichier sources vierge <code>exemple.asm</code>.</p>
+
+<blockquote>
+<p>Quelques informations sur le début du code :</p>
+</blockquote>
+
+<ul>
+<li>Le programme est en SCREEN 1
+3 SPRITES vont être créés (la fusée du joueur, l&rsquo;ennemi/envahisseur, le tir)<br /></li>
+<li>On charge les formes des SPRITES dans la table TGS<br /></li>
+<li>On charge les attributs des SPRITES dans la table TAS<br /></li>
+<li>On va positionner 3 indicateurs qui nous serviront à déplacer les SPRITES plus tard.<br /></li>
+<li>On spécifie la taille des SPRITES</li>
+</ul>
+
+<p>Voici l&rsquo;entête, j&rsquo;ai juste modifié le nom du fichier qui sera généré via <code>FNAME</code> :
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#75715e">; MSX ROM Cartridge Header and Function library</span>
+<span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#a6e22e">FNAME</span> <span style="color:#e6db74">&ldquo;test1.ROM&rdquo;</span>
+<span style="color:#66d9ef">cpu</span> <span style="color:#f8f8f2">z80</span></p>
+
+<p><span style="color:#66d9ef">ORG</span> <span style="color:#ae81ff">4000h</span></p>
+
+<p><span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">&ldquo;MSXRom-Include.asm&rdquo;</span></p>
+
+<p><span style="color:#66d9ef">db</span> <span style="color:#e6db74">&ldquo;AB&rdquo;</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#f8f8f2">INIT</span>             <span style="color:#75715e">; Fait démarrer la ROM au label INIT</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">DS</span> <span style="color:#ae81ff">6</span>
+</pre></p>
+
+<hr />
+
+<h4 id="screen-1">SCREEN 1</h4>
+
+<p>Passons au début du code proprement dit et par le label (appelé aussi &ldquo;Etiquette&rdquo;) &lsquo;INIT:&rsquo; (c&rsquo;est par lui que la .ROM démarrera) :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Démarrage du programme à INIT</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#a6e22e">LD</span>   <span style="color:#f8f8f2">A,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; 1 pour screen 1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">[</span><span style="color:#ae81ff">64687</span><span style="color:#f8f8f2">],A</span>      <span style="color:#75715e">; (bios)SCRMOD adresse $FCAF :mode courant de l'ecran</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">95</span>             <span style="color:#75715e">; (bios) CHGMOD : change le mode l'écran</span>
+</pre>
+
+<p>Pas de modification par rapport aux précédent exemple, on se place en SCREEN 1.</p>
+
+<hr />
+
+<h4 id="chargement-de-la-tgs">CHARGEMENT DE LA TGS</h4>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Charge la TGS avec la forme des 3 sprites</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donnee</span>      <span style="color:#75715e">; va chercher les données TGS au label: donnee</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">14336</span>       <span style="color:#75715e">; adresse du début de la TGS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">24</span>          <span style="color:#75715e">; longueur du bloc = 3 sprites de 8 octets = 24</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+</pre>
+
+<p>Je commence par la fin, on va donner un ordre de transfert de données (les formes des SPRITES) qui seront écrites dans notre code (donc dans la RAM) vers la table TGS (donc la VRAM), on ne va pas pouvoir utiliser un ordre du style &ldquo;écrire dans la VRAM&rdquo; car cela est limité à une adresse mémoire et une donnée.<br />
+Pour de gros <strong>blocs de données entre RAM et VRAM</strong>, il existe une routine BIOS qui fait le boulôt : LIDRVM ou en langage assembleur <code>CALL 92</code> (en décimal) ou <code>CALL $5C</code> (en hexadécimal).
+Cette routine, pour être déclenchée, a besoin de 3 paramètres en entrée :</p>
+
+<ul>
+<li><strong>HL</strong>, pour les données des formes de sprites<br /></li>
+<li><strong>DE</strong>,  l&rsquo;adresse de la TGS à partir de laquelle on veut écrire (une donnée = une case mémoire)<br /></li>
+<li><strong>BC</strong>, la longueurde bloc total à transférer (en octets)</li>
+</ul>
+
+<p>Voici d&rsquo;ailleurs une définition de cette routine :</p>
+
+<blockquote>
+<p>LDIRVM<br />
+Address  : #005C<br />
+Function : Block transfer to VRAM from memory<br />
+Input    : BC - blocklength<br />
+           DE - Start address of VRAM<br />
+           HL - Start address of memory<br />
+Registers: All</p>
+</blockquote>
+
+<p>Vu que l&rsquo;on a <strong>3 SPRITES</strong> à charger (8 pixels sur 8 pixels donc 8 octets) on a 3 x  8 = <strong>24 données à envoyer en VRAM</strong>. On ne va pas les taper juste après la virgule du HL il ne saurait pas le traiter.
+On va plutôt lui dire où il peut les trouver et les &ldquo;digérer à son rythme&rdquo;, pour cela on va créer un nouveau label <code>donnee</code> qui abritera ces 24 données.</p>
+
+<p>Les données en général sont stockées plutôt à la fin du programme codé et chaque ligne doit commencer par un <code>DB</code>.</p>
+
+<p>Ce label <code>donnee</code> je l&rsquo;ai placé juste avant le pied de page, voici comment il se présente :
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Les données</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">donnee:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span>  <span style="color:#75715e">; sprite 0 pour la TGS</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span>  <span style="color:#75715e">; sprite 0</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">153</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span> <span style="color:#75715e">; sprite 1</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">102</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">66</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">36</span>   <span style="color:#75715e">; sprite 1</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 2</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 2</span>
+</pre></p>
+
+<p>Pour le <strong>SPRITE 0</strong>, les 2 premières lignes donnent 8 données qui forment un SPRITE joueur (la fusée) :
+<img src="/tuto asm 01/08/images/1.png?classes=shadow" alt="sprite 0" /></p>
+
+<p>Pour le <strong>SPRITE 1</strong>, les 2 lignes suivantes qui donnent la forme suivante pour l&rsquo;ennemi :
+<img src="/tuto asm 01/08/images/2.png?classes=shadow" alt="sprite 1" /></p>
+
+<p>Pour le <strong>SPRITE 2</strong>, les 2 dernières lignes qui donnent la forme suivante pour le tir :</p>
+
+<p><img src="/tuto asm 01/08/images/3.png?classes=shadow" alt="sprite 2" /></p>
+
+<p>Du coup, tout devient simple:</p>
+
+<ul>
+<li>On dit à <code>HL</code> de se charger (via l&rsquo;instruction &lsquo;LD&rsquo;) en allant chercher les données que l&rsquo;on a mis en fin de code dont le label est <code>donnee</code>.<br /></li>
+<li>On charge en <code>DE</code> le début de <strong>l&rsquo;adresse de la TGS</strong> (je vous ai dit dans un des premiers articles qu&rsquo;elle débutait à <strong>14336 en SCREEN 1</strong>).<br /></li>
+<li>On charge en <code>BC</code> <strong>la longueur du bloc</strong> &lsquo;donnee&rsquo;<br /></li>
+<li>On exécute <code>CALL 92</code> qui fera le boulot vu qu&rsquo;on lui a donné les entrants.</li>
+</ul>
+
+<hr />
+
+<h4 id="chargement-de-la-tas">CHARGEMENT DE LA TAS</h4>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;-------------------</span>
+<span style="color:#75715e">; Charge la TAS avec les attributs des 3 sprites  (registre 5)</span>
+<span style="color:#75715e">; Registre 5 =&gt; valeur x 128 = Début de l'adresse de la TAS</span>
+<span style="color:#75715e">;-------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">5</span>            <span style="color:#75715e">; registre 5 gère l'adresse de début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">54</span>           <span style="color:#75715e">; valeur 54 = positionne début de la TAS à l'adresse 6912</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans le VDP (VRAM)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donne1</span>      <span style="color:#75715e">; va chercher les données TAS au label: donne1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">6912</span>        <span style="color:#75715e">; adresse du début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">12</span>          <span style="color:#75715e">; longueur du bloc = 4 données pour chaque sprite (3 sprites)</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+</pre>
+
+<p>J&rsquo;y ai intégré un petit exercice de manière à progresser au fur et à mesure du code :</p>
+
+<p>Je vous ai dit qu&rsquo;en <strong>SCREEN 1 la table des attributs de SPRITE (TAS) débutait à l&rsquo;adresse 6912</strong>.
+Sur MSX on pourrait changer cette adresse pour diverses raisons (et d&rsquo;ailleurs, ces adresses de tables sont succeptibles de changer en fonction des modes SCREEN que l&rsquo;on utilise).</p>
+
+<p>Admettons que l&rsquo;on ne sait pas si la TAS est bien positionnée pour débuter à 6912.
+Je vous ai expliqué précédemment qu&rsquo;<strong>en VRAM</strong>, il existait des tables et des registres, et bien <strong>chaque table est gérée via un de ces registres</strong>.</p>
+
+<blockquote>
+<p><strong>Pour notre TAS c&rsquo;est le registre 5.</strong></p>
+</blockquote>
+
+<p>Toute valeur que l&rsquo;on écrira dans ce registre sera automatiquement multipliée par 128 et définira l&rsquo;adresse de début de la table TAS.
+Donc pour obtenir 6912, on le divise par 128 et cela donne 54.</p>
+
+<blockquote>
+<p><strong>Finalement, pour définir la TAS à 6912, il suffit d&rsquo;écrire dans le registre 5 la valeur 54.</strong></p>
+</blockquote>
+
+<p>C&rsquo;est l&rsquo;objet des 3 premières lignes du code ci-dessus jusqu&rsquo;au <code>CALL 71</code> (ou 47 en hexa) qui est la routine <strong>BIOS</strong> qui existe pour écrire dans les <strong>registres du VDP</strong> :</p>
+
+<blockquote>
+<p>WRTVDP<br />
+Address  : #0047<br />
+Function : write data in the VDP-register<br />
+Input    : B  - data to write<br />
+           C  - number of the register<br />
+Registers: AF, BC</p>
+</blockquote>
+
+<p>Fin de l&rsquo;exercice.</p>
+
+<p>Passons au chargement de la TAS : d&rsquo;abord la procédure va ressembler au PUTSPRITE du BASIC MSX donc cela devrait vous paraître simple et ensuite on va procéder au codage assembleur de la même manière que pour la TGS.</p>
+
+<p>On va donner 4 infos pour chaque SPRITE créé :</p>
+
+<ul>
+<li><strong>La position verticale du SPRITE à l&rsquo;écran</strong><br /></li>
+<li><strong>La position horizontale du SPRITE à l&rsquo;écran</strong><br /></li>
+<li><strong>Le numéro du SPRITE</strong><br /></li>
+<li><strong>La couleur du SPRITE</strong></li>
+</ul>
+
+<p>Mais avant de décrire le bout de code, il faut préciser une particularité importante des SPRITES, ils ne se localisent pas comme les caractères (32 colonnes sur 24 lignes) mais sur des coordonnées plus fines.</p>
+
+<p>En SCREEN 1 c&rsquo;est 256 pixels sur 192 pixels :<br />
+Du coup, on va pas trop s&rsquo;attarder sur la méthode car c&rsquo;est la même que pour la TGS et le commentaire associé au code est explicite.
+On va plutôt détailler le label <code>donne1</code> associé (que j&rsquo;ai placé au niveau du code, après le label <code>donnee</code> et avant le pied de page).</p>
+
+<p><img src="/tuto asm 01/08/images/4.png?classes=shadow" alt="screen" />  <center><em>Résolution graphique SCREEN 1</em></center></p>
+
+<p>.</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#f8f8f2">donne1:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">170</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">100</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">15</span>   <span style="color:#75715e">; Attributs du sprite 0 (position y, x, n°sprite,couleur)</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">12</span>       <span style="color:#75715e">; Attributs du sprite 1 (position y, x, n°sprite,couleur)</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">200</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">2</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span>      <span style="color:#75715e">; Attributs du sprite 2 (position y, x, n°sprite,couleur)</span>
+</pre>
+
+<p>Je vous avais dit qu&rsquo;il y a 4 informations à rentrer par SPRITE dans la TAS.</p>
+
+<p>Du coup, pour le SPRITE de la 1ere ligne, il aura au 1er affichage à l&rsquo;écran la coordonnée vertical=170  horizontal=100 pour le SPRITE numéro 0 et qui aura la couleur 15 (blanc), vous avez reconnu le sprite joueur/fusée.</p>
+
+<p>Je vous laisse décrypter les 2 autres lignes pour les 2 autres SPRITES.</p>
+
+<p>Juste pour finir sur ce code, on voit que l&rsquo;on a 12 données à rentrer, cela tombe bien c&rsquo;est ce que l&rsquo;on charge en <code>BC</code> avant de lancer le <code>CALL 92</code> qui devient familier pour vous maintenant.</p>
+
+<hr />
+
+<h4 id="3-indicateurs-de-deplacement">3 INDICATEURS DE DEPLACEMENT</h4>
+
+<p>Au début de l&rsquo;article j&rsquo;ai listé le fait que l&rsquo;on allait positionner 3 indicateurs nécessaire au déplacement des sprites.
+On ne va pas les utiliser de suite mais un minimum d&rsquo;information quand même :</p>
+
+<ul>
+<li><strong>indcol</strong> : un indicateur de collision</li>
+<li><strong>indbal</strong> : un indicateur de balle tirée<br /></li>
+<li><strong>inddir</strong>  : un indicateur de direction pour l&rsquo;ennemi</li>
+</ul>
+
+<p>Pour que le programme nous autorise à manipuler des valeurs avec ces termes, on doit d&rsquo;abord les déclarer comme suit :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#f8f8f2">indcol:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41000</span>       <span style="color:#75715e">; défini l'adresse de la variable indcol</span>
+<span style="color:#f8f8f2">indbal:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41001</span>       <span style="color:#75715e">; défini l'adresse de la variable indbal</span>
+<span style="color:#f8f8f2">inddir:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41002</span>       <span style="color:#75715e">; défini l'adresse de la variable inddir</span>
+</pre>
+
+<p>Ainsi on dit au programme qu&rsquo;à chaque fois que l&rsquo;on utilisera <code>indcol</code> cela voudra dire en fait que l&rsquo;on sollicite l&rsquo;adresse 41000 de la RAM (un choix arbitraire d&rsquo;adresse libre en RAM).
+On pourrait traduire <code>EQU</code> par &lsquo;équivaut&rsquo;.</p>
+
+<p>Idem pour les 2 autres déclarations. ce code je l&rsquo;ai placé dans le bas de page, mais vous pourriez le mettre dans l&rsquo;entête, cela n&rsquo;a pas grande importance.</p>
+
+<p>Ensuite, je vais assigner des valeurs à ces adresses, pour cela je place le code suivant à la suite du code sur le chargement de la TAS puisque cela fait partie de l&rsquo;initialisation du jeu :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Initialise les 3 variables </span>
+<span style="color:#75715e">; indcol: indicateur de collision 41000 (adresse)</span>
+<span style="color:#75715e">; indbal: indicateur de balle tirée  41001 (adresse)</span>
+<span style="color:#75715e">; inddir: indicateur de direction de l'ennemi 41002 (adresse)</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indcol],a</span>       <span style="color:#75715e">; indcol = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indbal],a</span>       <span style="color:#75715e">; indbal = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[inddir],a</span>       <span style="color:#75715e">; inddir = 1</span>
+</pre>
+
+<p>Rien d&rsquo;exceptionnel, je charge ces pseudo adresses (pour cela, je les passe entre crochets) avec un A qui vaut 1 puisque dans la 1ere ligne j&rsquo;ai assigné 1 à l&rsquo;accumulateur <strong>A</strong>.</p>
+
+<hr />
+
+<h4 id="taille-des-sprites">TAILLE DES SPRITES</h4>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Taille des sprites agrandis (registre 1)</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; registre 1 gère la talle des sprites</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">225</span>          <span style="color:#75715e">; 225 c'est la valeur pour agrandir un sprite 8 x 8</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans le VDP (VRAM)</span>
+</pre>
+
+<p>Sur MSX on peut agir sur la taille des SPRITES, pour cela on utilise le registre 1  de la VRAM qui accepte 4 valeurs possibles :</p>
+
+<blockquote>
+<p>SPRITES taille 8 x 8 normal      = 224<br />
+SPRITES taille 8 x 8 agrandis    = 225<br />
+SPRITES taille 16 x 16 normal   = 226<br />
+SPRITES taille 16 x 16 agrandis = 227</p>
+</blockquote>
+
+<p>Vu que l&rsquo;on a déclaré dans la TGS des SPRITES  de taille 8 x 8, on peut utiliser la valeur 224 ou 225 (vous pouvez vous amuser à changer la valeur pour voir la différence), dans notre jeux on va utiliser 225.</p>
+
+<p>Le code devrait donc vous parler maintenant : on charge &lsquo;C&rsquo; avec le numéro du registre 1 et &lsquo;B&rsquo; avec la valeur à écrire dans ce registre, ce sont les 2 entrants nécessaires au <code>CALL 71</code> qui permet d&rsquo;exécuter un ordre d&rsquo;écriture dans un registre VRAM.</p>
+
+<p>C&rsquo;était le dernier bout de code du <code>label INIT:</code><br />
+Si on veut voir le résultat il suffit de rajouter une boucle infinie, pour que le programme enchaine dessus après avoir exécuté toutes les actions du <code>INIT:</code>, comme cela par exemple :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#f8f8f2">LOOP:</span>
+     <span style="color:#a6e22e">jp</span> <span style="color:#f8f8f2">LOOP</span>
+</pre>
+
+<p>Vous pouvez faire <strong>F9</strong> dans CONTEXT, pour lancer la compilation, le fichier généré va s&rsquo;appeler <code>&quot;test1.ROM&quot;</code> et c&rsquo;est celui-là que vous faites glisser dans l&rsquo;émulateur blueMSX.</p>
+
+<p>Vous allez voir apparaître ceci :</p>
+
+<p><img src="/tuto asm 01/08/images/5.png?classes=shadow" alt="screen" /></p>
+
+<p>Mais où est passé le SPRITE représentant la balle (ou le lazer si vous voulez) ?</p>
+
+<p>Le premier réflex est de regarder ce que l&rsquo;on a déclaré comme coordonnées pour le SPRITE 2 qui le représente dans la TAS.</p>
+
+<p>Et que voit-on ?   Position verticale = 200&hellip;.alors que la résolution nous permet d&rsquo;aller à un maximum de 191. En le positionnant au delà il disparait dans la bordure de l&rsquo;écran mais il est déjà présent et il sera plus rapide à positionner correctement lorsqu&rsquo;on tirera que si on devait le charger dans la TAS puis calculer sa position au moment du tir.</p>
+
+<p>Si vous voulez le voir apparaitre et bien jouez avec ses coordonnées, compilez et essayez votre <strong>.ROM</strong> dans l&rsquo;émulateur.</p>
+
+<p>Voici le code complet de cet article :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#75715e">; MSX ROM Cartridge Header and Function library</span>
+<span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#a6e22e">FNAME</span> <span style="color:#e6db74">"test1.ROM"</span>
+<span style="color:#66d9ef">cpu</span> <span style="color:#f8f8f2">z80</span>
+
+<span style="color:#66d9ef">ORG</span> <span style="color:#ae81ff">4000h</span>
+
+<span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">"MSXRom-Include.asm"</span>
+
+<span style="color:#66d9ef">db</span> <span style="color:#e6db74">"AB"</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#f8f8f2">INIT</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">DS</span> <span style="color:#ae81ff">6</span>
+
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Démarrage du programme à INIT</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#a6e22e">LD</span>   <span style="color:#f8f8f2">A,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; 1 pour screen 1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">[</span><span style="color:#ae81ff">64687</span><span style="color:#f8f8f2">],A</span>      <span style="color:#75715e">; (bios)SCRMOD adresse $FCAF :mode courant de l'ecran</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">95</span>             <span style="color:#75715e">; (bios) CHGMOD : change le mode l'écran</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Charge la TGS avec la forme des 3 sprites</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donnee</span>      <span style="color:#75715e">; va chercher les données TGS au label: donnee</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">14336</span>       <span style="color:#75715e">; adresse du début de la TGS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">24</span>          <span style="color:#75715e">; longueur du bloc = 3 sprites de 8 octets = 24</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Charge la TAS avec les attributs des 3 sprites  (registre 5)</span>
+<span style="color:#75715e">; Registre 5 =&gt; valeur x 128 = Début de l'adresse de la TAS</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">5</span>            <span style="color:#75715e">; registre 5 gère l'adresse de début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">54</span>           <span style="color:#75715e">; valeur 54 = positionne début de la TAS à l'adresse 6912</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans le VDP (VRAM)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donne1</span>      <span style="color:#75715e">; va chercher les données TAS au label: donne1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">6912</span>        <span style="color:#75715e">; adresse du début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">12</span>          <span style="color:#75715e">; longueur du bloc = 4 données pour chaque sprite (3 sprites)</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Initialise les 3 variables </span>
+<span style="color:#75715e">; indcol: indicateur de collision 41000 (adresse)</span>
+<span style="color:#75715e">; indbal: indicateur de balle tirée  41001 (adresse)</span>
+<span style="color:#75715e">; inddir: indicateur de direction de l'ennemi 41002 (adresse)</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indcol],a</span>       <span style="color:#75715e">; indcol = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indbal],a</span>       <span style="color:#75715e">; indbal = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[inddir],a</span>       <span style="color:#75715e">; inddir = 1</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Taille des sprites agrandis (registre 1)</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; registre 1 gère la talle des sprites</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">225</span>          <span style="color:#75715e">; 225 c'est la valeur pour agrandir un sprite 8 x 8</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans le VDP (VRAM)</span>
+
+
+<span style="color:#f8f8f2">LOOP:</span>
+     <span style="color:#a6e22e">jp</span> <span style="color:#f8f8f2">LOOP</span>
+
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Les données</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">donnee:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span>  <span style="color:#75715e">; sprite 1 pour la TGS</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span>  <span style="color:#75715e">; sprite 1</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">153</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span> <span style="color:#75715e">; sprite 2</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">102</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">66</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">36</span>   <span style="color:#75715e">; sprite 2</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 3</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 3</span>
+<span style="color:#f8f8f2">donne1:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">170</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">100</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">15</span>   <span style="color:#75715e">; Attributs du sprite 0 (position x, y,n°sprite,couleur)</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">12</span>       <span style="color:#75715e">; Attributs du sprite 1 (position x, y,n°sprite,couleur)</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">200</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">2</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span>      <span style="color:#75715e">; Attributs du sprite 2 (position x, y,n°sprite,couleur)</span>
+
+
+
+<span style="color:#75715e">;**************************************************************************************************</span>
+<span style="color:#75715e">; Standard Libraries</span>
+<span style="color:#75715e">;**************************************************************************************************</span>
+
+<span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">"MSXRom-Lib.asm"</span> <span style="color:#75715e">; intègre la librairie MSX</span>
+
+<span style="color:#f8f8f2">END:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#66d9ef">$</span>
+<span style="color:#f8f8f2">indcol:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41000</span>       <span style="color:#75715e">; défini l'adresse de la variable indcol</span>
+<span style="color:#f8f8f2">indbal:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41001</span>       <span style="color:#75715e">; défini l'adresse de la variable indbal</span>
+<span style="color:#f8f8f2">inddir:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41002</span>       <span style="color:#75715e">; défini l'adresse de la variable inddir</span>
+
+<span style="color:#75715e">;**************************************************************************************************</span>
+<span style="color:#75715e">; RAM Definitions</span>
+<span style="color:#75715e">;**************************************************************************************************</span>
+
+<span style="color:#75715e">;-------------------</span>
+<span style="color:#75715e">; Définit que le programme démarrera au début de la RAM disponible</span>
+<span style="color:#75715e">;-------------------</span>
+<span style="color:#66d9ef">ORG</span> <span style="color:#f8f8f2">RAMSTART</span>
+</pre>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/tuto-asm-01/07/07-shoot/" title="07-un shoot-em-up"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/tuto-asm-01/09/09-deplacement/" title="09-Déplacement du joueur" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1571955104"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571955104"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571955104"></script>
+    <script src="/js/jquery.sticky.js?1571955104"></script>
+    <script src="/js/featherlight.min.js?1571955104"></script>
+    <script src="/js/highlight.pack.js?1571955104"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571955104"></script>
+    <script src="/js/learn.js?1571955104"></script>
+    <script src="/js/hugo-learn.js?1571955104"></script>
+
+    <link href="/mermaid/mermaid.css?1571955104" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571955104"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

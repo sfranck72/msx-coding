@@ -22,7 +22,7 @@ Je me suis procuré le livre suivant : MSX Programmes en langage machine de Stev
     </item>
     
     <item>
-      <title>02-Structure</title>
+      <title>02-Structure du MSX</title>
       <link>/tuto-asm-01/02/02structure/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -80,6 +80,41 @@ C&amp;rsquo;est lui que l&amp;rsquo;on va ouvrir avec l&amp;rsquo;éditeur de te
       <guid>/tuto-asm-01/06/06-afficher_chr/</guid>
       <description>La pratique : Afficher un caractère On va maintenant taper notre 1er code qui permettra :
   Activer le mode SCREEN 1. Afficher le caractère A à la position 5 de l&amp;rsquo;écran. Changer la couleur du caractère et du fond du caractère. Faire une boucle infinie pour que le résultat de cet affichage reste à l&amp;rsquo;écran.   Voici ce que cela donne pour l&amp;rsquo;ensemble du code, mais on va le reprendre bout par bout :</description>
+    </item>
+    
+    <item>
+      <title>07-un shoot-em-up</title>
+      <link>/tuto-asm-01/07/07-shoot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/07/07-shoot/</guid>
+      <description>Organigramme Maintenant que l&amp;rsquo;on a vu comment utiliser les tables relatives aux caractères, on va mettre en pratique la 2eme partie des tables du VDP : L&amp;rsquo;affichage des sprites.
+Avant de commencer, je vais vous parler du programme de shoot-em-up basique qui fait l&amp;rsquo;objet de ce blog.
+Car on va commencer à écrire ce programme. En effet, il a l&amp;rsquo;avantage d&amp;rsquo;être très simple et d&amp;rsquo;aborder les grands principes d&amp;rsquo;un jeu, c&amp;rsquo;est avec lui que l&amp;rsquo;on abordera la mise en pratique de l&amp;rsquo;affichage des sprites dans un premier temps.</description>
+    </item>
+    
+    <item>
+      <title>08-Afficher un sprite</title>
+      <link>/tuto-asm-01/08/08-sprite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/08/08-sprite/</guid>
+      <description>La pratique On va maintenant taper notre 1er code du shoot-em-up.
+On va enlever la partie du code correspondant à l&amp;rsquo;affichage du caractère (qui était notre exemple précédent), et donc repartir du fichier sources vierge exemple.asm.
+ Quelques informations sur le début du code :
+  Le programme est en SCREEN 1 3 SPRITES vont être créés (la fusée du joueur, l&amp;rsquo;ennemi/envahisseur, le tir)
+ On charge les formes des SPRITES dans la table TGS</description>
+    </item>
+    
+    <item>
+      <title>09-Déplacement du joueur</title>
+      <link>/tuto-asm-01/09/09-deplacement/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/09/09-deplacement/</guid>
+      <description>Maintenant que les SPRITES sont affichés, on va commencer à faire bouger la fusée du joueur.
+Pour cela on va un peu modifier la structure du code assembleur. Il y surement d&amp;rsquo;autres méthodes, mais c&amp;rsquo;est celle présentée par le livre, donc je l&amp;rsquo;ai suivi.
+Jusqu&amp;rsquo;à présent la ROM démarre et appelle tout de suite le sous-programme INIT. Pourquoi ? Ben, parce qu&amp;rsquo;on l&amp;rsquo;a spécifié dans l&amp;rsquo;entête du code, souvenez vous le DW INIT :</description>
     </item>
     
   </channel>
