@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.59.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>10-Déplacement de l&#39;envahisseur :: MSX-coding</title>
+
+    
+    <link href="/css/nucleus.css?1572304547" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1572304547" rel="stylesheet">
+    <link href="/css/hybrid.css?1572304547" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1572304547" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1572304547" rel="stylesheet">
+    <link href="/css/auto-complete.css?1572304547" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1572304547" rel="stylesheet">
+    <link href="/css/theme.css?1572304547" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1572304547" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1572304547" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1572304547"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/tuto-asm-01/10/10-envahisseur/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="/">
+  <img id="sfranck-logo" style="width:100%; height:100%;" viewBox="0 0 504 140" src="/images/logo.png">
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1572304547"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1572304547"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1572304547"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/tuto-asm-01/" title="Tuto ASM 01" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/tuto-asm-01/">
+          Tuto ASM 01
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/01/01introduction/" title="01-Introduction" class="dd-item ">
+        <a href="/tuto-asm-01/01/01introduction/">
+        01-Introduction
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/02/02structure/" title="02-Structure du MSX" class="dd-item ">
+        <a href="/tuto-asm-01/02/02structure/">
+        02-Structure du MSX
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/03/03affchr/" title="03-Afficher un caractère" class="dd-item ">
+        <a href="/tuto-asm-01/03/03affchr/">
+        03-Afficher un caractère
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/04/04-mise-en-place/" title="04-Mise en place" class="dd-item ">
+        <a href="/tuto-asm-01/04/04-mise-en-place/">
+        04-Mise en place
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/05/05-decouverte/" title="05-Découverte du code" class="dd-item ">
+        <a href="/tuto-asm-01/05/05-decouverte/">
+        05-Découverte du code
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/06/06-afficher_chr/" title="06-La pratique" class="dd-item ">
+        <a href="/tuto-asm-01/06/06-afficher_chr/">
+        06-La pratique
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/07/07-shoot/" title="07-un shoot-em-up" class="dd-item ">
+        <a href="/tuto-asm-01/07/07-shoot/">
+        07-un shoot-em-up
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/08/08-sprite/" title="08-Afficher un sprite" class="dd-item ">
+        <a href="/tuto-asm-01/08/08-sprite/">
+        08-Afficher un sprite
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/09/09-deplacement/" title="09-Déplacement du joueur" class="dd-item ">
+        <a href="/tuto-asm-01/09/09-deplacement/">
+        09-Déplacement du joueur
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/tuto-asm-01/10/10-envahisseur/" title="10-Déplacement de l&#39;envahisseur" class="dd-item active">
+        <a href="/tuto-asm-01/10/10-envahisseur/">
+        10-Déplacement de l&#39;envahisseur
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Accueil</a> > <a href='/tuto-asm-01/'>Tuto ASM 01</a> > 10-Déplacement de l'envahisseur
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              10-Déplacement de l&#39;envahisseur
+            </h1>
+          
+
+        
+
+
+
+<p>On le sait tous, un extra-terrestre c&rsquo;est bête à manger du foin, donc on va lui créer une intelligence artificielle (IA) limitée&hellip;</p>
+
+<p>en fait, on va faire déplacer l&rsquo;ennemi de façon autonome mais simple et de plus, l&rsquo;exemple du livre ne va pas plus loin, donc&hellip;.on va dire que c&rsquo;est moi qui suis limité ;-)</p>
+
+<p>On va utiliser une des variables que l&rsquo;on a déclaré précédemment et qui s&rsquo;appelle <code>inddir</code> (comme &lsquo;indicateur de direction&rsquo;), je vous rappelle ce que l&rsquo;on avait fait pour ces variables :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#f8f8f2">indcol:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41000</span>       <span style="color:#75715e">; défini l'adresse de la variable indcol (registre des collisions)</span>
+<span style="color:#f8f8f2">indbal:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41001</span>       <span style="color:#75715e">; défini l'adresse de la variable indbal</span>
+<span style="color:#f8f8f2">inddir:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41002</span>       <span style="color:#75715e">; défini l'adresse de la variable inddir</span>
+</pre>
+
+<p>On les a d&rsquo;abord déclaré comme associées à une adresse spécifique de la mémoire RAM dans le pied de page de notre code , pour <code>inddir</code> c&rsquo;était une adresse très lointaine dans la mémoire qui nous permet d&rsquo;espérer qu&rsquo;elle ne se fera pas écraser par du code, ici l&rsquo;adresse 41002.</p>
+
+<p>De ce fait on pourra stocker n&rsquo;importe quelle valeur dedans et la modifier au besoin.</p>
+
+<p>Cet indicateur, on va le manipuler pour le faire passer d&rsquo;une valeur 0 à 1 (et inversement).</p>
+
+<p>Dans l&rsquo;un des articles précédent on a déclaré <code>inddir</code> à l&rsquo;adresse 41002 mais on a stocké une valeur dedans qui était 1, un petit rappel de la manière dont on a procédé dans le code :
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Initialise les 3 variables </span>
+<span style="color:#75715e">; indcol: indicateur de collision adresse 41000</span>
+<span style="color:#75715e">; indbal: indicateur de balle tirée adresse 41001</span>
+<span style="color:#75715e">; inddir: indicateur de direction de l&rsquo;ennemi adresse 41002</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indcol],a</span>       <span style="color:#75715e">; indcol = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indbal],a</span>       <span style="color:#75715e">; indbal = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[inddir],a</span>       <span style="color:#75715e">; inddir = 1</span>
+</pre></p>
+
+<p>La stratégie va être que dans la boucle principale du programme, on va appeler une fois par boucle la routine de déplacement de l&rsquo;ennemi.</p>
+
+<p>Avant de le déplacer, on va aller consulter la valeur de cet indicateur :</p>
+
+<ul>
+<li>s&rsquo;il est à 1 on appellera une routine pour le déplacer de droite à gauche,</li>
+<li>s&rsquo;il est à 0 on appellera une routine qui le déplace de gauche à droite.</li>
+</ul>
+
+<p>Mais ce n&rsquo;est pas tout, avant d&rsquo;incrémenter le déplacement dans les sous-routine on vérifiera que la valeur de la coordonnée (ici, <strong>X</strong>) n&rsquo;a pas atteint une extrémité de l&rsquo;écran.</p>
+
+<p>Si c&rsquo;est le cas, on va aller changer la valeur de l&rsquo;indicateur à l&rsquo;adresse 41002 pour qu&rsquo;il se déplace dans l&rsquo;autre sens à la prochaine boucle et ce, jusqu&rsquo;à l&rsquo;extrémité opposée. un petit schéma :
+<img src="/tuto asm 01/10/images/1.png?classes=shadow" alt="schema" /></p>
+
+
+<div class="notices note" ><p>Pourquoi x=240 à droite alors que la résolution va jusqu&rsquo;à 256 ?</p>
+</div>
+
+
+<p>En fait les coordonnées des sprites correspondent au premier pixel en haut à gauche de chaque sprite.</p>
+
+<p>Nos sprites étant agrandis à une taille x2, ils font 16 pixels sur 16 pixels, donc quand notre sprite est à la coordonnée x=240, entre 240 et 256 ce sont les 16 pixels de l&rsquo;envahisseur qui s&rsquo;affichent.</p>
+
+<blockquote>
+<p>Si on décidait d&rsquo;aller au-delà le sprite sortirait de l&rsquo;écran car il a besoin de 16 pixels à droite pour apparaître.</p>
+</blockquote>
+
+<hr />
+
+<p>Je vais d&rsquo;abord vous décrire l&rsquo;algorithme choisi pour le déplacement (qui commence par la routine <code>DEPENV</code>) et ensuite on rentrera dans le code :
+<img src="/tuto asm 01/10/images/2.png?classes=shadow" alt="algo" /></p>
+
+<p>On a donc 4 routines à écrire :</p>
+
+<ul>
+<li><strong>DEPENV</strong> (comme &lsquo;déplacement envahisseur&rsquo;)<br /></li>
+<li><strong>ENDRO1</strong> (envahisseur droite)<br /></li>
+<li><strong>ENGAU</strong> (envahisseur à gauche)<br /></li>
+<li><strong>ENGAU1</strong> (sous routine envahisseur à gauche)</li>
+</ul>
+
+<p>Dans la boucle principale du programme on appellera la routine <code>DEPENV</code> qui  dispatchera le travail entre  les sous-routines en fonction de l&rsquo;état de l&rsquo;indicateur <code>inddir</code> et de l&rsquo;état de la valeur de la coordonnée X du sprite envahisseur.</p>
+
+<p>Passons au code que l&rsquo;on rajoute en dessous de la routine <code>DELAI</code> (mais on pourrait le mettre ailleurs vu qu&rsquo;on utilise des labels pour les appeler) :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Déplacement de l'envahisseur / Gestion de la direction de l'envahisseur</span>
+<span style="color:#75715e">; indir=1 : de droite à gauche / indir=0 : de gauche à droite</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">DEPENV:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,[inddir]</span>   <span style="color:#75715e">; on charge en a la valeur de l'indicateur de direction</span>
+<span style="color:#a6e22e">dec</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on décremente a pour vérifier si indir=1</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">z,ENGAU</span>      <span style="color:#75715e">; si a=0 c'est que inddir valait 1,on va au sous-prog ENGAU (à gauche)</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; sinon on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l'adresse dans A donc x=A</span>
+<span style="color:#a6e22e">sub</span>    <span style="color:#ae81ff">240</span>          <span style="color:#75715e">; on elève 240 à a</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">nz,ENDRO1</span>    <span style="color:#75715e">; si le résultat n'égale pas 0 alors on va en ENDRO1 (à droite)</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>          <span style="color:#75715e">; sinon on est au bord droit de l'écran et on change l'indicateur</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">[inddir],a</span>   <span style="color:#75715e">; on charge l'indicateur avec la nouvelle direction (1)</span>
+<span style="color:#a6e22e">ret</span>
+</pre>
+
+<p>La 1ere chose que fait la routine <code>DEPENV</code>, c&rsquo;est de vérifier la valeur de l&rsquo;indicateur <code>inddir</code>, s&rsquo;il vaut 1 c&rsquo;est que l&rsquo;envahisseur doit se déplacer vers la gauche (0 vers la droite), il suffit de faire un calcul sur la valeur de l&rsquo;inddir.</p>
+
+<p>Ici on lui soustrait 1 :</p>
+
+<ul>
+<li>si le résultat est égale à 0 c&rsquo;est que <strong>inddir=1</strong> quand on l&rsquo;a appelé, dans ce cas on appelle la sous-routine <code>ENGAU</code> qui gère ce type de déplacement.<br /></li>
+<li>sinon (<strong>inddir=0</strong> car 0-1 n&rsquo;égale pas 0) on récupère le X du sprite envahisseur à l&rsquo;adresse correspondante.</li>
+</ul>
+
+<p>la TAS abrite ces informations, elle débute à 6912 et il faut 4 adresses pour chaque sprites, donc pour l&rsquo;envahisseur c&rsquo;est 6917 qui abrite la valeur du X&hellip;.<br />
+&hellip;bon allez, je vous fais un petit rappel de ce qu&rsquo;on a rentré dans la TAS pour ces SPRITES :</p>
+
+<p><img src="/tuto asm 01/10/images/3.png?classes=shadow" alt="schema" /></p>
+
+<p>Donc on récupère la valeur de la coordonnée X du sprite, comme on compare avec zéro ou pas zéro, pour vérifier si X=240, il suffit de faire un calcul dessus, si tel n&rsquo;est  pas le cas alors la sous-routine <code>ENDRO1</code> fera le boulot de déplacement vers la droite.</p>
+
+<p>Si par contre on est déjà à l&rsquo;extrème droite de l&rsquo;écran, on ne fait que changer la valeur de inddir pour qu&rsquo;à la prochaine boucle l&rsquo;envahisseur se déplace vers la gauche.</p>
+
+<p>Je vous donne les autres sous-routines, elles sont maintenant simples à comprendre :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Déplacement de l'envahisseur vers la droite</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">ENDRO1:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l'adresse dans A donc x=A</span>
+<span style="color:#a6e22e">inc</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on incrémente a pour déplacer de 1 à droite (x+1)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; on charge la position x de la TAS avec le x+1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span>
+
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Changement de direction (0) si l'envahisseur est arrivé au bord gauche x=0</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">ENGAU:</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>       <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>  <span style="color:#ae81ff">74</span>            <span style="color:#75715e">; la fonction récupère la valeur de l'adresse dans A donc x=A</span>
+<span style="color:#a6e22e">SUB</span>   <span style="color:#ae81ff">1</span>             <span style="color:#75715e">; on enlève 1 à a (x-1)</span>
+<span style="color:#a6e22e">jp</span>    <span style="color:#f8f8f2">nz,ENGAU1</span>     <span style="color:#75715e">; si maintenant n'est pas égale à 0 on va en ENGAU1</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">0</span>           <span style="color:#75715e">; sinon on est au bord gauche de l'écran et on change l'indicateur</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">[inddir],a</span>    <span style="color:#75715e">; on charge l'indicateur avec la nouvelle direction (0)</span>
+<span style="color:#a6e22e">ret</span>
+
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Déplacement de l'envahisseur vers la gauche</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#f8f8f2">ENGAU1:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l'adresse dans A donc x=A</span>
+<span style="color:#a6e22e">dec</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on décrémente a pour déplacer de 1 à gauche (x-1)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; on charge la position x de la TAS avec le x+1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span>
+</pre>
+
+<p>Ce code est à ajouter en dessous de la routine <code>DEPENV</code>.</p>
+
+<p>Elles sont simple à comprendre, surtout avec le schéma de l&rsquo;algorithme que je vous ai fait plus haut.
+La seule subtilité c&rsquo;est les routines qui ont pour rôle de calculer le prochain déplacement effectif de l&rsquo;envahisseur (<code>ENGAU1</code> et <code>ENDRO1</code>) finissent par un <code>CALL 77</code> qui est <strong>l&rsquo;instruction qui modifie vraiment la coordonnée X du SPRITE dans la TAS</strong>, sans ce CALL 77 les autres calculs que l&rsquo;on a fait étaient sans impact sur la TAS. Ils étaient un peut comme quand l&rsquo;on fait des calculs sur le coin d&rsquo;un cahier de brouillon.</p>
+
+<p>Il ne nous reste plus qu&rsquo;à rajouter une instruction dans la boucle principale qui appellera le <code>DEPENV</code> et c&rsquo;est <code>CALL DEPENV</code> (c&rsquo;est la ligne 8 du code ci-dessous) :</p>
+
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">;------------------------------------------------------------------------------</span>
+<span style="color:#75715e">; Boucle du jeu : Le programme démarre à DEBUT puis va à BOUCLE</span>
+<span style="color:#75715e">;------------------------------------------------------------------------------</span>
+
+<span style="color:#f8f8f2">DEBUT:</span>              <span style="color:#75715e">; c'est ici que débute le programme !!!</span>
+<span style="color:#a6e22e">call</span>  <span style="color:#f8f8f2">INIT</span>          <span style="color:#75715e">; on appelle le sous-prog INIT</span>
+<span style="color:#f8f8f2">BOUCLE:</span>             <span style="color:#75715e">; c'est la boucle principale du programme !!!</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DEPENV</span>       <span style="color:#75715e">; on appelle le déplacement de l'envahisseur</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on appelle le sous-prog DELAI afin de ralentir l'exécution</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">8</span>          <span style="color:#75715e">; on teste la touche gauche = ligne 8 de la matrice du clavier</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">321</span>          <span style="color:#75715e">; (bios) SNSMAT retourne dans la valeur de la ligne 8</span>
+<span style="color:#a6e22e">bit</span>    <span style="color:#ae81ff">4</span><span style="color:#f8f8f2">,a</span>          <span style="color:#75715e">; bit teste la colonne 4 (0=pressé 1=non pressé)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">z,FUSGAU</span>     <span style="color:#75715e">; si résultat=0 on va au sous-prog FUSGAU (déplacer à droite)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on ralenti l'exécution</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">8</span>          <span style="color:#75715e">; la touche droite est aussi sur la ligne 8 de la matrice</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">321</span>          <span style="color:#75715e">; on appelle le bios pour qu'il donne la valeur de la ligne 8</span>
+<span style="color:#a6e22e">bit</span>    <span style="color:#ae81ff">7</span><span style="color:#f8f8f2">,a</span>          <span style="color:#75715e">; la colonne 7 est testée (0=pressé 1=non pressé)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">z,FUSDRO</span>     <span style="color:#75715e">; si résultat=0 on va au sous-prog FUSDRO (déplacer àgauche)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on ralenti l'exécution</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">BOUCLE</span>       <span style="color:#75715e">; on redémarre la boucle principale</span>
+</pre>
+
+<p>Et pour finir le code entier du programme mis à jour qu&rsquo;il ne vous reste plus qu&rsquo;à compiler et lancer dans l&rsquo;émulateur blueMSX :
+<pre style="line-height:125%;margin:0"><span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#75715e">; MSX ROM Cartridge Header and Function library</span>
+<span style="color:#75715e">; ****************************************************************</span>
+<span style="color:#a6e22e">FNAME</span> <span style="color:#e6db74">&ldquo;test3.ROM&rdquo;</span>
+<span style="color:#66d9ef">cpu</span> <span style="color:#f8f8f2">z80</span></p>
+
+<p><span style="color:#66d9ef">ORG</span> <span style="color:#ae81ff">4000h</span></p>
+
+<p><span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">&ldquo;MSXRom-Include.asm&rdquo;</span></p>
+
+<p><span style="color:#66d9ef">db</span> <span style="color:#e6db74">&ldquo;AB&rdquo;</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#f8f8f2">DEBUT</span>            <span style="color:#75715e">; la ROM lance le sous-programme DEBUT au démarrage</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">DW</span> <span style="color:#ae81ff">0</span>
+<span style="color:#a6e22e">DS</span> <span style="color:#ae81ff">6</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Iinitialisation, appelé par le début du programme : DEBUT</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">INIT:</span>
+<span style="color:#a6e22e">Ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; 1 pour screen 1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">[</span><span style="color:#ae81ff">64687</span><span style="color:#f8f8f2">],a</span>      <span style="color:#75715e">; (bios)SCRMOD adresse hexa $FCAF :mode courant de l&rsquo;ecran</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">95</span>             <span style="color:#75715e">; (bios)CHGMOD : change le mode l&rsquo;écran</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Charge la TGS avec la forme des 3 sprites</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donnee</span>      <span style="color:#75715e">; charge les données TGS via le label: donnee</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">14336</span>       <span style="color:#75715e">; adresse du début de la TGS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">24</span>          <span style="color:#75715e">; longueur du bloc = 3 sprites de 8 octets = 24</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Charge la TAS avec les attributs des 3 sprites  (registre 5)</span>
+<span style="color:#75715e">; Registre 5 =&gt; valeur x 128 = Début de l&rsquo;adresse de la TAS</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">5</span>            <span style="color:#75715e">; registre 5 gère l&rsquo;adresse de début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">54</span>           <span style="color:#75715e">; valeur 54 = positionne début de la TAS à l&rsquo;adresse 6912</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans le VDP (VRAM)</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">hl,donne1</span>      <span style="color:#75715e">; charge les données TAS au label: donne1</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">de,</span><span style="color:#ae81ff">6912</span>        <span style="color:#75715e">; adresse du début de la TAS</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">bc,</span><span style="color:#ae81ff">12</span>          <span style="color:#75715e">; longueur du bloc = 4 données pour chaque sprite (3 sprites)</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">92</span>             <span style="color:#75715e">; LIDRVM transfert de bloc de la RAM vers la VRAM</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Initialise les 3 variables </span>
+<span style="color:#75715e">; indcol: indicateur de collision adresse 41000</span>
+<span style="color:#75715e">; indbal: indicateur de balle tirée adresse 41001</span>
+<span style="color:#75715e">; inddir: indicateur de direction de l&rsquo;ennemi adresse 41002</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indcol],a</span>       <span style="color:#75715e">; indcol = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[indbal],a</span>       <span style="color:#75715e">; indbal = 1</span>
+<span style="color:#a6e22e">ld</span> <span style="color:#f8f8f2">[inddir],a</span>       <span style="color:#75715e">; inddir = 1</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Taille des sprites agrandis (registre 1)</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">1</span>            <span style="color:#75715e">; registre 1 gère la taille des sprites</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">225</span>          <span style="color:#75715e">; 225 c&rsquo;est la valeur pour agrandir un sprite 8 x 8</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans un registre du VDP (VRAM)</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Positionne l&rsquo;adresse de début de la TNP (registre 2)</span>
+<span style="color:#75715e">; Registre 2 =&gt; valeur x 1024 = Début de l&rsquo;adresse de la TNP</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">c,</span><span style="color:#ae81ff">2</span>            <span style="color:#75715e">; registre 2</span>
+<span style="color:#a6e22e">ld</span>   <span style="color:#f8f8f2">b,</span><span style="color:#ae81ff">6</span>            <span style="color:#75715e">; valeur 6 = positionne début de la TNP à l&rsquo;adresse 6144</span>
+<span style="color:#a6e22e">call</span> <span style="color:#ae81ff">71</span>             <span style="color:#75715e">; WRTVDP Ecrire dans un registre du VDP (VRAM)</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; fin de la boucle INIT</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Déplacement de la fusée à gauche</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">FUSGAU:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6913</span>      <span style="color:#75715e">; récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction charge la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">dec</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on teste A en le décrementant d&rsquo;une unité x-1</span>
+<span style="color:#a6e22e">ret</span>    <span style="color:#f8f8f2">z</span>            <span style="color:#75715e">; si le résultat de l&rsquo;opération x=0 on ne fait rien</span>
+                    <span style="color:#75715e">; et on quitte la sous-routine</span>
+                    <span style="color:#75715e">; car cela veut dire que la fusée est à la limite de l&rsquo;écran à gauche</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; sinon on charge la position x de la TAS avec la nouvelle valeur x-1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Déplacement de la fusée droite</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">FUSDRO:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6913</span>      <span style="color:#75715e">; récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction charge la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">SUB</span>    <span style="color:#ae81ff">240</span>          <span style="color:#75715e">; on teste A en lui enlevant 240</span>
+<span style="color:#a6e22e">ret</span>    <span style="color:#f8f8f2">z</span>            <span style="color:#75715e">; si le résultat de l&rsquo;opération=0 on ne fait rien </span>
+                    <span style="color:#75715e">; et on quitte la sous-routine</span>
+                    <span style="color:#75715e">; car cela veut dire que la fusée est à la limite de l&rsquo;écran à droite</span>
+<span style="color:#a6e22e">add</span>    <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">241</span>        <span style="color:#75715e">; rajoute les 240 pour retrouver le x initial et incrémente de 1(donc 241)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; sinon on charge la position x de la TAS avec la nouvelle valeur x+1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; DELAI</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">DELAI:</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">255</span>         <span style="color:#75715e">; c&rsquo;est la valeur de départ, plus elles est haute, plus c&rsquo;est lent</span>
+                    <span style="color:#75715e">; a ne peut contenir qu&rsquo;une valeur entre 0 et 255</span>
+<span style="color:#f8f8f2">DEL:</span>
+<span style="color:#a6e22e">dec</span>   <span style="color:#f8f8f2">a</span>             <span style="color:#75715e">; c&rsquo;est la boucle qui va décrémenter de 1 jusqu&rsquo;à a=0</span>
+<span style="color:#a6e22e">jp</span>    <span style="color:#f8f8f2">nz,DEL</span>        <span style="color:#75715e">; si a n&rsquo;est pas égale à 0 on repart au début de la boucle</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; si a=0 on retourne au programme principal</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Déplacement de l&rsquo;envahisseur / Gestion de la direction de l&rsquo;envahisseur</span>
+<span style="color:#75715e">; indir=1 : de droite à gauche / indir=0 : de gauche à droite</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">DEPENV:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,[inddir]</span>   <span style="color:#75715e">; on charge en a la valeur de l&rsquo;indicateur de direction</span>
+<span style="color:#a6e22e">dec</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on décremente a pour vérifier si indir=1</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">z,ENGAU</span>      <span style="color:#75715e">; si a=0 c&rsquo;est que inddir valait 1,on va au sous-prog ENGAU (à gauche)</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; sinon on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">sub</span>    <span style="color:#ae81ff">240</span>          <span style="color:#75715e">; on elève 240 à a</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">nz,ENDRO1</span>    <span style="color:#75715e">; si le résultat n&rsquo;égale pas 0 alors on va en ENDRO1 (à droite)</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">1</span>          <span style="color:#75715e">; sinon on est au bord droit de l&rsquo;écran et on change l&rsquo;indicateur</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">[inddir],a</span>   <span style="color:#75715e">; on charge l&rsquo;indicateur avec la nouvelle direction (1)</span>
+<span style="color:#a6e22e">ret</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Déplacement de l&rsquo;envahisseur vers la droite</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">ENDRO1:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">inc</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on incrémente a pour déplacer de 1 à droite (x+1)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; on charge la position x de la TAS avec le x+1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Changement de direction (0) si l&rsquo;envahisseur est arrivé au bord gauche x=0</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">ENGAU:</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>       <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>  <span style="color:#ae81ff">74</span>            <span style="color:#75715e">; la fonction récupère la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">SUB</span>   <span style="color:#ae81ff">1</span>             <span style="color:#75715e">; on enlève 1 à a (x-1)</span>
+<span style="color:#a6e22e">jp</span>    <span style="color:#f8f8f2">nz,ENGAU1</span>     <span style="color:#75715e">; si maintenant n&rsquo;est pas égale à 0 on va en ENGAU1</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">0</span>           <span style="color:#75715e">; sinon on est au bord gauche de l&rsquo;écran et on change l&rsquo;indicateur</span>
+<span style="color:#a6e22e">ld</span>    <span style="color:#f8f8f2">[inddir],a</span>    <span style="color:#75715e">; on charge l&rsquo;indicateur avec la nouvelle direction (0)</span>
+<span style="color:#a6e22e">ret</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Déplacement de l&rsquo;envahisseur vers la gauche</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">ENGAU1:</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">hl,</span><span style="color:#ae81ff">6917</span>      <span style="color:#75715e">; on récupère adresse de la position x du sprite dans la TAS</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">74</span>           <span style="color:#75715e">; la fonction récupère la valeur de l&rsquo;adresse dans A donc x=A</span>
+<span style="color:#a6e22e">dec</span>    <span style="color:#f8f8f2">a</span>            <span style="color:#75715e">; on décrémente a pour déplacer de 1 à gauche (x-1)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">77</span>           <span style="color:#75715e">; on charge la position x de la TAS avec le x+1</span>
+<span style="color:#a6e22e">ret</span>                 <span style="color:#75715e">; on retourne au programme principal</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Boucle du jeu : Le programme démarre à DEBUT puis va à BOUCLE</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span></p>
+
+<p><span style="color:#f8f8f2">DEBUT:</span>              <span style="color:#75715e">; c&rsquo;est ici que débute le programme !!!</span>
+<span style="color:#a6e22e">call</span>  <span style="color:#f8f8f2">INIT</span>          <span style="color:#75715e">; on appelle le sous-prog INIT</span>
+<span style="color:#f8f8f2">BOUCLE:</span>             <span style="color:#75715e">; c&rsquo;est la boucle principale du programme !!!</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DEPENV</span>       <span style="color:#75715e">; on appelle le déplacement de l&rsquo;envahisseur</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on appelle le sous-prog DELAI afin de ralentir l&rsquo;exécution</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">8</span>          <span style="color:#75715e">; on teste la touche gauche = ligne 8 de la matrice du clavier</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">321</span>          <span style="color:#75715e">; (bios) SNSMAT retourne dans la valeur de la ligne 8</span>
+<span style="color:#a6e22e">bit</span>    <span style="color:#ae81ff">4</span><span style="color:#f8f8f2">,a</span>          <span style="color:#75715e">; bit teste la colonne 4 (0=pressé 1=non pressé)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">z,FUSGAU</span>     <span style="color:#75715e">; si résultat=0 on va au sous-prog FUSGAU (déplacer à droite)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on ralenti l&rsquo;exécution</span>
+<span style="color:#a6e22e">ld</span>     <span style="color:#f8f8f2">a,</span><span style="color:#ae81ff">8</span>          <span style="color:#75715e">; la touche droite est aussi sur la ligne 8 de la matrice</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#ae81ff">321</span>          <span style="color:#75715e">; on appelle le bios pour qu&rsquo;il donne la valeur de la ligne 8</span>
+<span style="color:#a6e22e">bit</span>    <span style="color:#ae81ff">7</span><span style="color:#f8f8f2">,a</span>          <span style="color:#75715e">; la colonne 7 est testée (0=pressé 1=non pressé)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">z,FUSDRO</span>     <span style="color:#75715e">; si résultat=0 on va au sous-prog FUSDRO (déplacer àgauche)</span>
+<span style="color:#a6e22e">call</span>   <span style="color:#f8f8f2">DELAI</span>        <span style="color:#75715e">; on ralenti l&rsquo;exécution</span>
+<span style="color:#a6e22e">jp</span>     <span style="color:#f8f8f2">BOUCLE</span>       <span style="color:#75715e">; on redémarre la boucle principale</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#75715e">; Les données</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</span>
+<span style="color:#f8f8f2">donnee:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span>  <span style="color:#75715e">; sprite 1 pour la TGS</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span>  <span style="color:#75715e">; sprite 1   &ldquo;     &ldquo;</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">126</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">153</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">255</span> <span style="color:#75715e">; sprite 2   &ldquo;     &ldquo;</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">102</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">60</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">66</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">36</span>   <span style="color:#75715e">; sprite 2   &ldquo;     &ldquo;</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 3   &ldquo;     &ldquo;</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">24</span>    <span style="color:#75715e">; sprite 3   &ldquo;     &ldquo;</span>
+<span style="color:#f8f8f2">donne1:</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">170</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">100</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">15</span>   <span style="color:#75715e">; Fusée joueur sprite 0 (position y, x,n°sprite,couleur)</span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">12</span>       <span style="color:#75715e">; Envahisseur  sprite 1 (position y, x,n°sprite,couleur)  </span>
+<span style="color:#66d9ef">db</span>     <span style="color:#ae81ff">200</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">0</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">2</span><span style="color:#f8f8f2">,</span><span style="color:#ae81ff">1</span>      <span style="color:#75715e">; Laser fusée  sprite 2 (position y, x,n°sprite,couleur)</span></p>
+
+<p><span style="color:#75715e">;***********************************************************************************************<strong><em></span>
+<span style="color:#75715e">; Standard Libraries</span>
+<span style="color:#75715e">;</em></strong>***********************************************************************************************</span></p>
+
+<p><span style="color:#a6e22e">INCLUDE</span> <span style="color:#e6db74">&ldquo;MSXRom-Lib.asm&rdquo;</span> <span style="color:#75715e">; intègre la librairie MSX</span></p>
+
+<p><span style="color:#f8f8f2">END:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#66d9ef">$</span>
+<span style="color:#f8f8f2">indcol:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41000</span>       <span style="color:#75715e">; défini l&rsquo;adresse de la variable indcol (registre des collisions)</span>
+<span style="color:#f8f8f2">indbal:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41001</span>       <span style="color:#75715e">; défini l&rsquo;adresse de la variable indbal</span>
+<span style="color:#f8f8f2">inddir:</span> <span style="color:#a6e22e">EQU</span> <span style="color:#ae81ff">41002</span>       <span style="color:#75715e">; défini l&rsquo;adresse de la variable inddir</span></p>
+
+<p><span style="color:#75715e">;***********************************************************************************************<strong><em></span>
+<span style="color:#75715e">; RAM Definitions</span>
+<span style="color:#75715e">;</em></strong>***********************************************************************************************</span></p>
+
+<p><span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</span>
+<span style="color:#75715e">; Définit que le programme démarrera au début de la RAM disponible</span>
+<span style="color:#75715e">;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</span>
+<span style="color:#66d9ef">ORG</span> <span style="color:#f8f8f2">RAMSTART<br /></span> </pre></p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/tuto-asm-01/09/09-deplacement/" title="09-Déplacement du joueur"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/tuto-asm-01/01/01introduction/" title="01-Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1572304547"></script>
+    <script src="/js/perfect-scrollbar.min.js?1572304547"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1572304547"></script>
+    <script src="/js/jquery.sticky.js?1572304547"></script>
+    <script src="/js/featherlight.min.js?1572304547"></script>
+    <script src="/js/highlight.pack.js?1572304547"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1572304547"></script>
+    <script src="/js/learn.js?1572304547"></script>
+    <script src="/js/hugo-learn.js?1572304547"></script>
+
+    <link href="/mermaid/mermaid.css?1572304547" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1572304547"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

@@ -117,5 +117,16 @@ Pour cela on va un peu modifier la structure du code assembleur. Il y surement d
 Jusqu&amp;rsquo;à présent la ROM démarre et appelle tout de suite le sous-programme INIT. Pourquoi ? Ben, parce qu&amp;rsquo;on l&amp;rsquo;a spécifié dans l&amp;rsquo;entête du code, souvenez vous le DW INIT :</description>
     </item>
     
+    <item>
+      <title>10-Déplacement de l&#39;envahisseur</title>
+      <link>/tuto-asm-01/10/10-envahisseur/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/10/10-envahisseur/</guid>
+      <description>On le sait tous, un extra-terrestre c&amp;rsquo;est bête à manger du foin, donc on va lui créer une intelligence artificielle (IA) limitée&amp;hellip;
+en fait, on va faire déplacer l&amp;rsquo;ennemi de façon autonome mais simple et de plus, l&amp;rsquo;exemple du livre ne va pas plus loin, donc&amp;hellip;.on va dire que c&amp;rsquo;est moi qui suis limité ;-)
+On va utiliser une des variables que l&amp;rsquo;on a déclaré précédemment et qui s&amp;rsquo;appelle inddir (comme &amp;lsquo;indicateur de direction&amp;rsquo;), je vous rappelle ce que l&amp;rsquo;on avait fait pour ces variables :</description>
+    </item>
+    
   </channel>
 </rss>
