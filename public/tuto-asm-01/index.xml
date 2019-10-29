@@ -6,7 +6,6 @@
     <description>Recent content in Tuto ASM 01 on MSX-coding</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
-    <lastBuildDate>Wed, 23 Oct 2019 01:48:00 +0200</lastBuildDate>
     
 	<atom:link href="/tuto-asm-01/index.xml" rel="self" type="application/rss+xml" />
     
@@ -126,6 +125,29 @@ Jusqu&amp;rsquo;à présent la ROM démarre et appelle tout de suite le sous-pro
       <description>On le sait tous, un extra-terrestre c&amp;rsquo;est bête à manger du foin, donc on va lui créer une intelligence artificielle (IA) limitée&amp;hellip;
 en fait, on va faire déplacer l&amp;rsquo;ennemi de façon autonome mais simple et de plus, l&amp;rsquo;exemple du livre ne va pas plus loin, donc&amp;hellip;.on va dire que c&amp;rsquo;est moi qui suis limité ;-)
 On va utiliser une des variables que l&amp;rsquo;on a déclaré précédemment et qui s&amp;rsquo;appelle inddir (comme &amp;lsquo;indicateur de direction&amp;rsquo;), je vous rappelle ce que l&amp;rsquo;on avait fait pour ces variables :</description>
+    </item>
+    
+    <item>
+      <title>11-Gestion du tir</title>
+      <link>/tuto-asm-01/11/11-gestiontir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/11/11-gestiontir/</guid>
+      <description>Il ne nous reste plus que le tir à implémenter et notre exemple de shoot &amp;lsquo;em up sera terminé.
+Le principe est simple, une fois que la touche ESPACE sera appuyée, on va déclencher le tir et indiquer qu&amp;rsquo;il faut déplacer le laser en activant une variable indbal (indicateur de balle tirée), pendant ce déplacement du laser on va surveiller 2 choses :
+ la collision entre le SPRITE de l&amp;rsquo;envahisseur et le SPRITE du laser.</description>
+    </item>
+    
+    <item>
+      <title>12-Fin du tutoriel</title>
+      <link>/tuto-asm-01/12/12-fin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/tuto-asm-01/12/12-fin/</guid>
+      <description>SHOOT &amp;lsquo;EM UP Comme son titre l&amp;rsquo;indique, on est parvenu à la fin du tutoriel.
+Le but était de faire une initiation de l&amp;rsquo;assembleur MSX, les routines sont simples, le code peut-être largement amélioré, mes explications surement aussi.
+Mais si cela peut donner des idées à ceux qui ont envie de se lancer, mon objectif sera atteint.
+Mon plus grand souhait serait que ceux qui maîtrisent l&amp;rsquo;assembleur sous MSX aient pris connaissance du niveau d&amp;rsquo;explication qui est nécessaire pour des personnes qui souhaitent progresser.</description>
     </item>
     
   </channel>

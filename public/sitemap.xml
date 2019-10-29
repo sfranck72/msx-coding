@@ -7,11 +7,31 @@
   </url>
   
   <url>
+    <loc>/traductions/karoshi/</loc>
+  </url>
+  
+  <url>
+    <loc>/tuto-asm-01/</loc>
+  </url>
+  
+  <url>
     <loc>/tuto-asm-01/02/02structure/</loc>
   </url>
   
   <url>
+    <loc>/traductions/</loc>
+  </url>
+  
+  <url>
+    <loc>/traductions/musique/</loc>
+  </url>
+  
+  <url>
     <loc>/tuto-asm-01/03/03affchr/</loc>
+  </url>
+  
+  <url>
+    <loc>/traductions/zemmixneo/</loc>
   </url>
   
   <url>
@@ -43,13 +63,16 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-10-23T04:27:59+02:00</lastmod>
+    <loc>/tuto-asm-01/11/11-gestiontir/</loc>
   </url>
   
   <url>
-    <loc>/tuto-asm-01/</loc>
-    <lastmod>2019-10-23T01:48:00+02:00</lastmod>
+    <loc>/tuto-asm-01/12/12-fin/</loc>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-10-23T04:27:59+02:00</lastmod>
   </url>
   
   <url>
