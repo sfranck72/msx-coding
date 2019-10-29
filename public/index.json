@@ -7,6 +7,13 @@
 	"content": " Outils nécessaires:  Tiasm (assembleur) blueMSX (émulateur) Context Editor (éditeur de texte)  Le but de ce blog est de présenter le plus simplement possible l\u0026rsquo;utilisation de l\u0026rsquo;assembleur sur MSX. Quitte à vulgariser, je tente de regrouper ici, ce que je n\u0026rsquo;ai pu trouver ailleurs sur le net afin de m\u0026rsquo;initier à l\u0026rsquo;assembleur.\nJe me suis procuré le livre suivant : MSX Programmes en langage machine de Steve WEBB. Ce livre contient notamment un programme réalisé en assembleur. C\u0026rsquo;est un shoot-em-up très basique mais qui permet de mettre en application les notions de base de l\u0026rsquo;assembleur.\nLes articles de ce site vont décrire, par étapes, les notions abordées et la manière dont je les ai comprises\n"
 },
 {
+	"uri": "/dynamicpub/01/",
+	"title": "Article 1",
+	"tags": [],
+	"description": "",
+	"content": " N°01 : Utiliser une police de caractère et afficher du texte. L\u0026rsquo;article a été réalisé sur MSX à l\u0026rsquo;aide du programme Dynamic Publisher.\nArticle au format PDF :\n dynpub01.pdf  Article au format PDF :\n DynPub Fr.dsk\nLa version dsk est un format disquette pour le charger sur un émulateur MSX par exemple.  Manuel Dynamic Publisher :\n DynamicPublisher-Manuel.pdf  \r\rFichiers associés\r\r\rDynPub Fr.dsk\r\r(720 ko)\r\r\rDynamicPublisher-Manuel.pdf\r\r(8611 ko)\r\r\rdynpub01.pdf\r\r(1243 ko)\r\r\r\r"
+},
+{
 	"uri": "/traductions/karoshi/",
 	"title": "Traductions KAROSHI",
 	"tags": [],
@@ -49,8 +56,15 @@
 	"content": " (La théorie) Un caractère affiché par le VDP c\u0026rsquo;est 3 tables auxquelles on devra donner des instructions:\n TNP (position à l\u0026rsquo;écran)\n TGP (la forme du caractère)\n TC (la couleur du caractère et du fond de celui-ci)\n  TNP  En mode SCREEN 1, on a vu que la TNP débute à l\u0026rsquo;adresse 6144.\n On sait aussi qu\u0026rsquo;en SCREEN 1 on a 32 colonnes pour 24 lignes (pour le texte). Cela donne 768 positions possibles à l\u0026rsquo;écran (32 x 24 = 768).\nCes positions vont de gauche à droite (comme le fonctionnement d\u0026rsquo;une machine à écrire), de la position 0 à 31 pour la première ligne, puis passe à la ligne 2 et poursuit la numérotation jusqu\u0026rsquo;à la dernière position N° 768 en bas à droite.\nVoici l\u0026rsquo;écran telle qu\u0026rsquo;il est en SCREEN 1 :  TNP Screen 1 \nToutes les positions sont des adresses mémoires qui se suivent. Sachant que la TNP débute à l\u0026rsquo;adresse 6144, on sait maintenant que cette adresse correspond à la position 0. Si on veut afficher le caractère à la position 5, on va simplement faire 6144+5 et on aura l\u0026rsquo;adresse où afficher le caractère: 6149\nTGP On a vu que c\u0026rsquo;était la table qui abrite les formes des caractères. Cette table contient 256 caractères numérotés sous la norme standard internationale ASCII.\n Table des caractères \nUn exemple avec le tableau ci-dessus :\nVous voulez le code ASCII de la lettre \u0026lsquo;A\u0026rsquo;, vous prenez le N° de ligne et de colonne (respectivement), ici 4 et 1, vous l\u0026rsquo;assemblez et cela donne du hexadécimal : 41\nEn assemblage on utilise beaucoup l\u0026rsquo;hexadécimal pour des raisons que je n\u0026rsquo;expliquerai pas ici.\nMais il est facile de traduire de l\u0026rsquo;hexadécimal vers le décimal (et inversement), avec une calculatrice.\nCelle de Windows le fait très bien, il suffit de choisir dans le menu : Affichage/Programmeur.\nVous cochez : Vous rentrez le nombre 41, il ne vous reste plus qu\u0026rsquo;à cocher\nDéc  et vous obtenez du décimal, dans notre cas 65, qui est le n° ASCII de la lettre \u0026lsquo;A\u0026rsquo; que reconnait la TGP, ouf !!!\nJuste pour information, l\u0026rsquo;adresse de la lettre \u0026lsquo;A\u0026rsquo; dans la TGP n\u0026rsquo;est pas 65. Chaque caractère est défini dans une grille de 8 x 8 (comme un sprite simple).\nDonc chaque caractère prend 8 adresses mémoires successives dans la TGP.\nLa TGP débute en 0 (SCREEN 1), notre \u0026lsquo;A\u0026rsquo; est le 65ème, donc son adresse de début de forme est : Adresse de début de la TGP + 65*8 = 0 + 520 = 520\nSi on voulait modifier la forme du \u0026lsquo;A\u0026rsquo; il faudrait que l\u0026rsquo;on modifie les valeurs des adresses 520 à 527 (8 octets), mais on va pas le faire dans notre exemple.\nAvec l\u0026rsquo;adresse et le code du caractère, on est déjà capable de l\u0026rsquo;afficher, la couleur est optionnelle. On va quand même voir comment la TC fonctionne.\nTC Pour modifier cette table, il nous faut 2 informations :\nL\u0026rsquo;adresse du caractère dans cette table. Le calcul de sa couleur.  Dans notre exemple, le \u0026lsquo;A\u0026rsquo; c\u0026rsquo;est le numéro 65, on le divise par 8 et on ajoute ce résultat au début de l\u0026rsquo;adresse de la table (8192 en SCREEN1). (65:8) + 8192 = 8200 (on ne retient que la part entière).\n 8200 c\u0026rsquo;est l\u0026rsquo;adresse du \u0026lsquo;A\u0026rsquo; dans la TC.\n Pour la couleur (16 couleurs disponibles en SCREEN 1), le calcul est :\nCouleur du caractère x 16 + couleur de fond du caractère. Pour un caractère Magenta (couleur 13) et Fond Blanc (couleur 15) cela donne:\n13 x 16 + 15 = 223\nDonc si on veut modifier une couleur, on passe par cette table et on modifie la valeur de l\u0026rsquo;adresse 8200 en lui mettant 223. Affiche le caractère \u0026lsquo;A\u0026rsquo; à l\u0026rsquo;écran\nVoilà, on va mettre tout cela en application en utilisant enfin un assembleur pour MSX.\nL\u0026rsquo;article suivant va uniquement parler de la mise en place des outils pour programmer en assembleur.\nC\u0026rsquo;est le préalable à la mise en pratique de ce que nous avons vu jusqu\u0026rsquo;ici.\n"
 },
 {
+	"uri": "/dynamicpub/",
+	"title": "Dynamic Publisher",
+	"tags": [],
+	"description": "",
+	"content": " Découverte de Dynamic Publisher sur MSX. C\u0026rsquo;est un des premier éditeur / PAO sur ordinateur.\nLes articles sont réalisés sur le MSX.\n"
+},
+{
 	"uri": "/traductions/zemmixneo/",
-	"title": "Manuel Zemmix Neo",
+	"title": "Traduction Zemmix Neo",
 	"tags": [],
 	"description": "",
 	"content": " CONSOLE ZEMMIX NEO Manuel Zemmix Neo en français :\n Manuel Zemmix Neo.pdf  \r\rFichiers associés\r\r\rZemmix-Neo-Lite_Manuel-utilisateur.pdf\r\r(1392 ko)\r\r\r\r"
@@ -61,6 +75,13 @@
 	"tags": [],
 	"description": "",
 	"content": " des outils de développement On va avoir besoin d\u0026rsquo;installer 3 programmes :\n Un émulateur (simule un MSX)\n Un éditeur de texte (pour taper du code texte assembleur)\n un assembleur (compile le code texte en code machine utilisable par un MSX)  Pour cela j\u0026rsquo;ai suivi les explications du site d\u0026rsquo;un développeur anglais dont je vous donne l\u0026rsquo;adresse de sa chaine Youtube :\nLets Make a Retro Game\nEMULATEUR L\u0026rsquo;émulateur MSX s\u0026rsquo;appelle blueMSX, je vous invite à le télécharger à l\u0026rsquo;adresse suivante dans la section téléchargement : http://www.bluemsx.com\nVous l\u0026rsquo;installez où vous voulez, il n\u0026rsquo;y a rien de particulier.\nQuand vous le lancez pour la première fois, je vous invite à aller dans le le menu, choisir Outils, ensuite Editeur de machine et dans le champ Configuration vous sélectionnez MSX-French et vous cliquez sur le bouton [Lancer].\nVous avez un MSX francais qui démarre,vous validez par [Entrée] quand il vous demande la date.\nEDITEUR DE TEXTE On va installer un éditeur de texte qui s\u0026rsquo;appelle CONTEXT Editor, il est simple d\u0026rsquo;utilisation et permettra de lancer la compilation avec des touches de raccourci.\nLe liens de téléchargement est le suivant :\nCONTEXT Editor\nInstallez en suivant la procédure proposée par défaut.\nLe développeur du site que j\u0026rsquo;ai indiqué nous met à disposition un petit plugin qui permet de mettre en couleur le texte assembleur, il se trouve ici : coloration de syntaxe\nPour ajouter le colorateur syntaxique à CONTEXT il faut coller le fichier WLA DX Z80 Assembler.chl dans le dossier suivant :\nC:\\Program Files (x86)\\ConTEXT\\Highlighters Le dossier sera le suivant si vous êtes en mode Windows 32-bit :\nC:\\Program Files\\ConTEXT\\Highlighters\nASSEMBLEUR Pour l\u0026rsquo;assembleur, c\u0026rsquo;est tniASM (v0.45).\nIl est simple et pratique lui aussi.\nVoici l\u0026rsquo;adresse : tniasm 0.45\nVous téléchargez la version gratuite et vous la dézippez dans le répertoire suivant sur votre PC :\nC:\\tniasm045\nVous devez ainsi avoir les 2 fichiers suivant dans le dossier \u0026lsquo;tniasm045\u0026rsquo; :\n tniasm.exe\n tniasm.txt  Le fichier tniasm.txt est la documentation de l\u0026rsquo;outil, mais en anglais. Vu que je me suis \u0026lsquo;cogné\u0026rsquo; la traduction en français, autant qu\u0026rsquo;elle serve : doc française de tniasm à télécharger en bas de cette page.\nCONTEXT-TOUCHE RACCOURCI Afin de rendre CONTEXT plus facile d\u0026rsquo;utilisation, on peut paramétrer des touches de raccourci pour compiler le code automatiquement, et faire apparaître les lignes d\u0026rsquo;erreur.\nDans le menu de CONTEXT choisissez \u0026lsquo;Options / Environment Options / Execute Keys vous devez avoir cet écran :\nCliquez sur le bouton [Add] et remplissez avec asm,z80 Ainsi, on va définir une action pour tous les fichiers qui ont une extension de type .asm ou .z80.\nCliquez sur [OK]. Vous devriez obtenir cela dans la petite fenêtre de gauche :\nCliquez sur la touche de fonction F9 dans cette petite fenêtre et ensuite remplissez les champs à droite comme suit :\n   champs Valeur à taper     Execute c:\\tniasm045\\tniasm.exe   Start in %p   Parameters %n   Window Normal   Hint Compile   Save Current file before execution   Use short Dos names Not ticked   Capture console output Ticked   Compiler output parser rule *line%l(%n)*   Scroll console to the last line Ticked    Vous obtenez ceci :\nQuand on voudra compiler du code assembleur, on aura plus qu\u0026rsquo;à appuyer sur F9 et cela se fera automatiquement, ou s\u0026rsquo;il y a une erreur de compilation on le verra dans la fenêtre basse de CONTEXT.\nPour tester cet environnement on utilisera des fichiers source, c\u0026rsquo;est l\u0026rsquo;objet du prochain article.\nJe tiens à remercier celui qui a fait cette procédure d\u0026rsquo;installation, que je n\u0026rsquo;ai fait que traduire et adapter à notre exemple, visitez son site : http://www.electricadventures.net/\n\r\r\rFichiers associés\r\r\rtniasm_fr.txt\r\r(29 ko)\r\r\r\r"
+},
+{
+	"uri": "/traductions/megaflasrom/",
+	"title": "Traductions MegaFlashROM",
+	"tags": [],
+	"description": "",
+	"content": " MegaflashROM SCC+SD Traduction du manuel et d\u0026rsquo;une procédure d\u0026rsquo;utilisation.\n\r\rFichiers associés\r\r\rMegaFlashROM SCC\u0026#43; SD Manuel Utilisateur.pdf\r\r(543 ko)\r\r\rMegaFlashROM.pdf\r\r(255 ko)\r\r\r\r"
 },
 {
 	"uri": "/tuto-asm-01/05/05-decouverte/",
@@ -131,6 +152,13 @@
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "/games/",
+	"title": "Games",
+	"tags": [],
+	"description": "",
+	"content": " LIZARD WILLY \r\rFichiers associés\r\r\r\r"
 },
 {
 	"uri": "/tags/",

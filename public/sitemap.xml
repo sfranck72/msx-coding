@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>/dynamicpub/01/</loc>
+  </url>
+  
+  <url>
     <loc>/traductions/karoshi/</loc>
   </url>
   
@@ -31,11 +35,19 @@
   </url>
   
   <url>
+    <loc>/dynamicpub/</loc>
+  </url>
+  
+  <url>
     <loc>/traductions/zemmixneo/</loc>
   </url>
   
   <url>
     <loc>/tuto-asm-01/04/04-mise-en-place/</loc>
+  </url>
+  
+  <url>
+    <loc>/traductions/megaflasrom/</loc>
   </url>
   
   <url>
@@ -77,6 +89,10 @@
   
   <url>
     <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/games/</loc>
   </url>
   
   <url>
