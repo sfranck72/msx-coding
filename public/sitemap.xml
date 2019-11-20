@@ -55,7 +55,15 @@
   </url>
   
   <url>
+    <loc>/games/</loc>
+  </url>
+  
+  <url>
     <loc>/tuto-asm-01/06/06-afficher_chr/</loc>
+  </url>
+  
+  <url>
+    <loc>/pixelart/</loc>
   </url>
   
   <url>
@@ -89,10 +97,6 @@
   
   <url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>/games/</loc>
   </url>
   
   <url>
